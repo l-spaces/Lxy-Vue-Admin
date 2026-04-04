@@ -4,9 +4,9 @@ outline: deep
 
 # Vben Modal
 
-`Vben Modal` is the shared modal wrapper used by the framework. It supports draggable behavior, fullscreen mode, auto-height handling, loading state, connected components, and an imperative API.
+`Vben Modal` 是框架使用的共享模态框包装器。它支持拖拽行为、全屏模式、自适应高度处理、加载状态、连接组件和命令式 API。
 
-## Basic Usage
+## 基础用法
 
 ```ts
 const [Modal, modalApi] = useVbenModal({
@@ -17,40 +17,40 @@ const [Modal, modalApi] = useVbenModal({
 
 <DemoPreview dir="demos/vben-modal/basic" />
 
-## Current Usage Notes
+## 当前使用注意事项
 
-- If you use `connectedComponent`, the inner and outer components share data through `modalApi.setData()` and `modalApi.getData()`.
-- When `connectedComponent` is present, avoid pushing extra modal props through the connected side. Prefer `useVbenModal(...)` or `modalApi.setState(...)`.
-- Default modal behavior can be adjusted in `apps/<app>/src/bootstrap.ts` through `setDefaultModalProps(...)`.
+- 如果使用 `connectedComponent`，内部和外部组件通过 `modalApi.setData()` 和 `modalApi.getData()` 共享数据。
+- 当存在 `connectedComponent` 时，避免从连接侧传入额外的模态框属性。建议使用 `useVbenModal(...)` 或 `modalApi.setState(...)`。
+- 默认模态框行为可以在 `apps/<app>/src/bootstrap.ts` 中通过 `setDefaultModalProps(...)` 进行调整。
 
-## Key Props
+## 关键属性
 
-| Prop | Description | Type |
+| 属性 | 描述 | 类型 |
 | --- | --- | --- |
-| `appendToMain` | mount inside the main content area instead of `body` | `boolean` |
-| `connectedComponent` | connect an inner component to the modal wrapper | `Component` |
-| `animationType` | modal enter/leave animation | `'slide' \| 'scale'` |
-| `fullscreenButton` | show or hide the fullscreen toggle | `boolean` |
-| `overlayBlur` | blur amount for the overlay | `number` |
-| `submitting` | lock modal interactions while submitting | `boolean` |
+| `appendToMain` | 挂载到主内容区域而非 `body` | `boolean` |
+| `connectedComponent` | 将内部组件连接到模态框包装器 | `Component` |
+| `animationType` | 模态框进入/离开动画 | `'slide' \| 'scale'` |
+| `fullscreenButton` | 显示或隐藏全屏切换按钮 | `boolean` |
+| `overlayBlur` | 遮罩层模糊程度 | `number` |
+| `submitting` | 提交时锁定模态框交互 | `boolean` |
 
-## Events
+## 事件
 
-| Event | Description | Type |
+| 事件 | 描述 | 类型 |
 | --- | --- | --- |
-| `onBeforeClose` | called before close; returning `false` or rejecting prevents close | `() => Promise<boolean \| undefined> \| boolean \| undefined` |
-| `onOpenChange` | called when open state changes | `(isOpen: boolean) => void` |
-| `onOpened` | called after open animation completes | `() => void` |
-| `onClosed` | called after close animation completes | `() => void` |
+| `onBeforeClose` | 关闭前调用；返回 `false` 或拒绝可阻止关闭 | `() => Promise<boolean \| undefined> \| boolean \| undefined` |
+| `onOpenChange` | 打开状态变化时调用 | `(isOpen: boolean) => void` |
+| `onOpened` | 打开动画完成后调用 | `() => void` |
+| `onClosed` | 关闭动画完成后调用 | `() => void` |
 
 ## modalApi
 
-| Method                  | Description                           |
-| ----------------------- | ------------------------------------- |
-| `setState(...)`         | updates modal state                   |
-| `open()`                | opens the modal                       |
-| `close()`               | closes the modal                      |
-| `setData(data)`         | stores shared data                    |
-| `getData<T>()`          | reads shared data                     |
-| `lock(isLocked = true)` | locks the modal into submitting state |
-| `unlock()`              | alias for `lock(false)`               |
+| 方法 | 描述 |
+| --- | --- |
+| `setState(...)` | 更新模态框状态 |
+| `open()` | 打开模态框 |
+| `close()` | 关闭模态框 |
+| `setData(data)` | 存储共享数据 |
+| `getData<T>()` | 读取共享数据 |
+| `lock(isLocked = true)` | 将模态框锁定为提交状态 |
+| `unlock()` | `lock(false)` 的别名 |

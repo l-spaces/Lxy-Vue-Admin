@@ -4,48 +4,48 @@ outline: deep
 
 # Vben CountToAnimator
 
-`CountToAnimator` renders animated number transitions.
+`CountToAnimator` 渲染数字过渡动画。
 
-## Basic Usage
+## 基础用法
 
-Use `start-val`, `end-val`, and `duration` to control the animation range and timing.
+使用 `start-val`、`end-val` 和 `duration` 控制动画范围和时长。
 
 <DemoPreview dir="demos/vben-count-to-animator/basic" />
 
-## Formatting
+## 格式化
 
-Use `prefix`, `suffix`, `separator`, and `decimal` to control how the number is displayed.
+使用 `prefix`、`suffix`、`separator` 和 `decimal` 控制数字的显示格式。
 
 <DemoPreview dir="demos/vben-count-to-animator/custom" />
 
-## Props
+## 属性
 
-| Prop | Description | Type | Default |
+| 属性 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `startVal` | starting value | `number` | `0` |
-| `endVal` | ending value | `number` | `2021` |
-| `duration` | animation duration in ms | `number` | `1500` |
-| `autoplay` | start automatically | `boolean` | `true` |
-| `prefix` | value prefix | `string` | `''` |
-| `suffix` | value suffix | `string` | `''` |
-| `separator` | thousands separator | `string` | `','` |
-| `decimal` | decimal separator | `string` | `'.'` |
-| `color` | text color | `string` | `''` |
-| `useEasing` | enable transition preset easing | `boolean` | `true` |
-| `transition` | transition preset name | `keyof typeof TransitionPresets` | `'linear'` |
-| `decimals` | decimal places to keep | `number` | `0` |
+| `startVal` | 起始值 | `number` | `0` |
+| `endVal` | 结束值 | `number` | `2021` |
+| `duration` | 动画时长（毫秒） | `number` | `1500` |
+| `autoplay` | 自动开始 | `boolean` | `true` |
+| `prefix` | 值前缀 | `string` | `''` |
+| `suffix` | 值后缀 | `string` | `''` |
+| `separator` | 千位分隔符 | `string` | `','` |
+| `decimal` | 小数点分隔符 | `string` | `'.'` |
+| `color` | 文本颜色 | `string` | `''` |
+| `useEasing` | 启用过渡预设缓动 | `boolean` | `true` |
+| `transition` | 过渡预设名称 | `keyof typeof TransitionPresets` | `'linear'` |
+| `decimals` | 保留小数位数 | `number` | `0` |
 
-## Events
+## 事件
 
-| Event        | Description                     | Type         |
+| 事件 | 描述 | 类型 |
 | ------------ | ------------------------------- | ------------ |
-| `started`    | fired when the animation starts | `() => void` |
-| `finished`   | fired when the animation ends   | `() => void` |
-| `onStarted`  | deprecated alias of `started`   | `() => void` |
-| `onFinished` | deprecated alias of `finished`  | `() => void` |
+| `started` | 动画开始时触发 | `() => void` |
+| `finished` | 动画结束时触发 | `() => void` |
+| `onStarted` | `started` 的已弃用别名 | `() => void` |
+| `onFinished` | `finished` 的已弃用别名 | `() => void` |
 
-## Exposed Methods
+## 暴露方法
 
-| Method  | Description                       | Type         |
+| 方法 | 描述 | 类型 |
 | ------- | --------------------------------- | ------------ |
-| `reset` | reset to `startVal` and run again | `() => void` |
+| `reset` | 重置为 `startVal` 并重新执行 | `() => void` |

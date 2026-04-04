@@ -1,3 +1,3 @@
-This is where language files should be placed.
+语言文件应放置在此目录中。
 
-Please DO NOT translate these directly, use this service instead: https://crowdin.com/project/tinymce
+请勿直接翻译这些文件，请使用此服务：https://crowdin.com/project/tinymce

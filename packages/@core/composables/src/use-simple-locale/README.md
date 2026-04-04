@@ -1,3 +1,3 @@
 # Simple i18n
 
-Simple i18 implementation
+简单的国际化实现

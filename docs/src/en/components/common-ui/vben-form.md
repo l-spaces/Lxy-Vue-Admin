@@ -4,22 +4,22 @@ outline: deep
 
 # Vben Form
 
-`Vben Form` is the shared form abstraction used across different UI-library variants such as `Ant Design Vue`, `Element Plus`, `Naive UI`, and other adapters added inside this repository.
+`Vben Form` 是跨不同 UI 库变体使用的共享表单抽象，如 `Ant Design Vue`、`Element Plus`、`Naive UI` 以及本仓库中添加的其他适配器。
 
-> If some details are not obvious from the docs, check the live demos as well.
+> 如果文档中的某些细节不够清晰，请同时查看在线演示。
 
-## Adapter Setup
+## 适配器设置
 
-Each app keeps its own adapter layer under `src/adapter/form.ts` and `src/adapter/component/index.ts`.
+每个应用在 `src/adapter/form.ts` 和 `src/adapter/component/index.ts` 下维护自己的适配器层。
 
-The current adapter pattern is:
+当前适配器模式为：
 
-- initialize the shared component adapter first
-- call `setupVbenForm(...)`
-- map special `v-model:*` prop names through `modelPropNameMap`
-- keep the form empty state aligned with the actual UI library behavior
+- 首先初始化共享组件适配器
+- 调用 `setupVbenForm(...)`
+- 通过 `modelPropNameMap` 映射特殊的 `v-model:*` 属性名称
+- 保持表单空状态与实际 UI 库行为一致
 
-### Form Adapter Example
+### 表单适配器示例
 
 ```ts
 import type {
@@ -69,7 +69,7 @@ export type VbenFormSchema = FormSchema<ComponentType>;
 export type { VbenFormProps };
 ```
 
-### Component Adapter Example
+### 组件适配器示例
 
 ```ts
 import type { Component, SetupContext } from 'vue';
@@ -185,19 +185,19 @@ async function initComponentAdapter() {
 export { initComponentAdapter };
 ```
 
-## Basic Usage
+## 基础用法
 
-Create the form through `useVbenForm`:
+通过 `useVbenForm` 创建表单：
 
 <DemoPreview dir="demos/vben-form/basic" />
 
-## Key API Notes
+## 关键 API 说明
 
-- `useVbenForm` returns `[Form, formApi]`
-- `formApi.getFieldComponentRef()` and `formApi.getFocusedField()` are available in current versions
-- `handleValuesChange(values, fieldsChanged)` includes the second parameter in newer versions
-- `fieldMappingTime` and `scrollToFirstError` are part of the current form props
+- `useVbenForm` 返回 `[Form, formApi]`
+- `formApi.getFieldComponentRef()` 和 `formApi.getFocusedField()` 在当前版本中可用
+- `handleValuesChange(values, fieldsChanged)` 在较新版本中包含第二个参数
+- `fieldMappingTime` 和 `scrollToFirstError` 是当前表单属性的一部分
 
-## Reference
+## 参考
 
-For the complete Chinese API tables and more examples, see the Chinese component page if you need the full parameter matrix.
+如需完整的中文 API 表格和更多示例，请参阅中文组件页面以获取完整的参数矩阵。

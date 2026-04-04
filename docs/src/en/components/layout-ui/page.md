@@ -4,26 +4,26 @@ outline: deep
 
 # Page
 
-`Page` is the standard top-level layout container for business pages. It provides a header area, a content area, and an optional footer area.
+`Page` 是业务页面的标准顶级布局容器。它提供头部区域、内容区域和可选的底部区域。
 
-## Props
+## 属性
 
-| Prop | Description | Type | Default |
+| 属性 | 描述 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| `title` | page title | `string \| slot` | - |
-| `description` | page description | `string \| slot` | - |
-| `contentClass` | class for the content area | `string` | - |
-| `headerClass` | class for the header area | `string` | - |
-| `footerClass` | class for the footer area | `string` | - |
-| `autoContentHeight` | auto-calculate the content area height from the visible layout height | `boolean` | `false` |
-| `heightOffset` | extra height offset subtracted from the content area when auto height is enabled | `number` | `0` |
+| `title` | 页面标题 | `string \| slot` | - |
+| `description` | 页面描述 | `string \| slot` | - |
+| `contentClass` | 内容区域的类名 | `string` | - |
+| `headerClass` | 头部区域的类名 | `string` | - |
+| `footerClass` | 底部区域的类名 | `string` | - |
+| `autoContentHeight` | 从可见布局高度自动计算内容区域高度 | `boolean` | `false` |
+| `heightOffset` | 启用自动高度时从内容区域减去的额外高度偏移量 | `number` | `0` |
 
-## Slots
+## 插槽
 
-| Slot          | Description               |
+| 插槽 | 描述 |
 | ------------- | ------------------------- |
-| `default`     | page content              |
-| `title`       | custom title              |
-| `description` | custom description        |
-| `extra`       | right-side header content |
-| `footer`      | footer content            |
+| `default` | 页面内容 |
+| `title` | 自定义标题 |
+| `description` | 自定义描述 |
+| `extra` | 头部右侧内容 |
+| `footer` | 底部内容 |

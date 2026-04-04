@@ -4,11 +4,11 @@ outline: deep
 
 # Vben Vxe Table
 
-`Vben Vxe Table` wraps `vxe-table` together with `Vben Form` so you can build searchable data grids with a shared API.
+`Vben Vxe Table` 将 `vxe-table` 与 `Vben Form` 封装在一起，使您可以使用共享 API 构建可搜索的数据表格。
 
-## Adapter Example
+## 适配器示例
 
-The current renderer adapter uses `renderTableDefault(...)` for table cell rendering:
+当前渲染器适配器使用 `renderTableDefault(...)` 进行表格单元格渲染：
 
 ```ts
 vxeUI.renderer.add('CellImage', {
@@ -30,7 +30,7 @@ vxeUI.renderer.add('CellLink', {
 });
 ```
 
-## Basic Usage
+## 基础用法
 
 ```vue
 <script setup lang="ts">
@@ -52,36 +52,36 @@ const [Grid, gridApi] = useVbenVxeGrid({
 
 ## GridApi
 
-| Method | Description | Type |
+| 方法 | 描述 | 类型 |
 | --- | --- | --- |
-| `setLoading` | update loading state | `(loading: boolean) => void` |
-| `setGridOptions` | merge new grid options | `(options: Partial<VxeGridProps['gridOptions']>) => void` |
-| `reload` | reload data and reset pagination | `(params?: Record<string, any>) => void` |
-| `query` | query data while keeping the current page | `(params?: Record<string, any>) => void` |
-| `grid` | `vxe-grid` instance | `VxeGridInstance` |
-| `formApi` | search form API | `FormApi` |
-| `toggleSearchForm` | toggle or force the search form visible state | `(show?: boolean) => boolean` |
+| `setLoading` | 更新加载状态 | `(loading: boolean) => void` |
+| `setGridOptions` | 合并新的表格选项 | `(options: Partial<VxeGridProps['gridOptions']>) => void` |
+| `reload` | 重新加载数据并重置分页 | `(params?: Record<string, any>) => void` |
+| `query` | 查询数据但保持当前页码 | `(params?: Record<string, any>) => void` |
+| `grid` | `vxe-grid` 实例 | `VxeGridInstance` |
+| `formApi` | 搜索表单 API | `FormApi` |
+| `toggleSearchForm` | 切换或强制设置搜索表单的显示状态 | `(show?: boolean) => boolean` |
 
-## Props
+## 属性
 
-| Prop | Description | Type |
+| 属性 | 描述 | 类型 |
 | --- | --- | --- |
-| `tableTitle` | table title | `string` |
-| `tableTitleHelp` | help text for the table title | `string` |
-| `class` | class for the outer container | `string` |
-| `gridClass` | class for the `vxe-grid` node | `string` |
-| `gridOptions` | `vxe-grid` options | `DeepPartial<VxeTableGridOptions>` |
-| `gridEvents` | `vxe-grid` event handlers | `DeepPartial<VxeGridListeners>` |
-| `formOptions` | search form options | `VbenFormProps` |
-| `showSearchForm` | whether the search form is visible | `boolean` |
-| `separator` | separator between the search form and table body | `boolean \| SeparatorOptions` |
+| `tableTitle` | 表格标题 | `string` |
+| `tableTitleHelp` | 表格标题的帮助文本 | `string` |
+| `class` | 外部容器的类名 | `string` |
+| `gridClass` | `vxe-grid` 节点的类名 | `string` |
+| `gridOptions` | `vxe-grid` 选项 | `DeepPartial<VxeTableGridOptions>` |
+| `gridEvents` | `vxe-grid` 事件处理器 | `DeepPartial<VxeGridListeners>` |
+| `formOptions` | 搜索表单选项 | `VbenFormProps` |
+| `showSearchForm` | 搜索表单是否可见 | `boolean` |
+| `separator` | 搜索表单与表格主体之间的分隔符 | `boolean \| SeparatorOptions` |
 
-## Slots
+## 插槽
 
-| Slot              | Description                                             |
+| 插槽 | 描述 |
 | ----------------- | ------------------------------------------------------- |
-| `toolbar-actions` | left side of the toolbar, near the title                |
-| `toolbar-tools`   | right side of the toolbar, before built-in tool buttons |
-| `table-title`     | custom table title                                      |
+| `toolbar-actions` | 工具栏左侧，靠近标题位置 |
+| `toolbar-tools` | 工具栏右侧，内置工具按钮之前 |
+| `table-title` | 自定义表格标题 |
 
-All named slots starting with `form-` are forwarded to the search form.
+所有以 `form-` 开头的具名插槽都会转发到搜索表单。

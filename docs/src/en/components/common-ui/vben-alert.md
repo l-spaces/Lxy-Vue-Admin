@@ -4,32 +4,32 @@ outline: deep
 
 # Vben Alert
 
-`Alert` provides lightweight JavaScript-driven dialogs for simple `alert`, `confirm`, and `prompt` style interactions.
+`Alert` 提供轻量级的 JavaScript 驱动对话框，用于简单的 `alert`、`confirm` 和 `prompt` 风格交互。
 
-## Basic Usage
+## 基础用法
 
-Use `alert` for a single confirm button dialog:
+使用 `alert` 显示单确认按钮对话框：
 
 <DemoPreview dir="demos/vben-alert/alert" />
 
-Use `confirm` for confirm/cancel interactions:
+使用 `confirm` 进行确认/取消交互：
 
 <DemoPreview dir="demos/vben-alert/confirm" />
 
-Use `prompt` when you need simple user input:
+当需要简单的用户输入时使用 `prompt`：
 
 <DemoPreview dir="demos/vben-alert/prompt" />
 
 ## useAlertContext
 
-If `content`, `footer`, or `icon` is rendered through a custom component, you can call `useAlertContext()` inside that component to access the current dialog actions.
+如果 `content`、`footer` 或 `icon` 通过自定义组件渲染，您可以在该组件内部调用 `useAlertContext()` 来访问当前对话框的操作方法。
 
-| Method      | Description                | Type         |
-| ----------- | -------------------------- | ------------ |
-| `doConfirm` | trigger the confirm action | `() => void` |
-| `doCancel`  | trigger the cancel action  | `() => void` |
+| 方法        | 描述               | 类型         |
+| ----------- | ------------------ | ------------ |
+| `doConfirm` | 触发确认操作       | `() => void` |
+| `doCancel`  | 触发取消操作       | `() => void` |
 
-## Core Types
+## 核心类型
 
 ```ts
 export type IconType = 'error' | 'info' | 'question' | 'success' | 'warning';
