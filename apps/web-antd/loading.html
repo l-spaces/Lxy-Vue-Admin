@@ -1,15 +1,52 @@
 <style data-app-loading="inject-css">
+  :root {
+    --loading-bg-light: #f4f7f9;
+    --loading-bg-dark: #0d0d10;
+    --loading-primary: #1890ff;
+    --loading-primary-dark: #096dd9;
+    --loading-primary-light: #40a9ff;
+    --loading-text-light: rgb(0 0 0 / 85%);
+    --loading-text-dark: rgb(255 255 255 / 85%);
+    --loading-text-secondary-light: rgb(0 0 0 / 65%);
+    --loading-text-secondary-dark: rgb(255 255 255 / 65%);
+    --loading-text-tertiary-light: rgb(0 0 0 / 45%);
+    --loading-text-tertiary-dark: rgb(255 255 255 / 45%);
+    --loading-border-light: rgb(0 0 0 / 8%);
+    --loading-border-dark: rgb(255 255 255 / 10%);
+    --loading-spinner-size: 120px;
+    --loading-spinner-size-mobile: 100px;
+  }
+
   html {
-    /* same as antdv-next/dist/reset.css setting, avoid the title line-height changed */
     line-height: 1.15;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   .dark .loading {
-    background-color: #0d0d10;
+    background-color: var(--loading-bg-dark);
   }
 
   .dark .loading .title {
-    color: rgb(255 255 255 / 85%);
+    color: var(--loading-text-dark);
+  }
+
+  .dark .loading .status-text {
+    color: var(--loading-text-secondary-dark);
+  }
+
+  .dark .loading .progress-bg {
+    background-color: var(--loading-border-dark);
+  }
+
+  .dark .loading .spinner-bg {
+    border-color: rgb(255 255 255 / 5%);
   }
 
   .loading {
@@ -25,266 +62,537 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    background-color: #f4f7f9;
+    background-color: var(--loading-bg-light);
+    will-change: opacity;
   }
 
-  /* .loading.hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.6s ease-out;
-  } */
-
-  .loading .title {
-    margin-top: 36px;
-    font-size: 30px;
-    font-weight: 600;
-    color: rgb(0 0 0 / 85%);
+  #__app-loading__ {
+    will-change: opacity, visibility;
   }
 
   #__app-loading__.hidden {
     pointer-events: none;
     visibility: hidden;
     opacity: 0;
-    transition: all 0.6s ease-out;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /** 下面是自定义 **/
-  /* From Uiverse.io by Admin12121 */
-  .content {
-    width: 300px;
-    height: 300px;
+  .loading .title {
+    margin-top: 48px;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--loading-text-light);
+    letter-spacing: 1px;
+    text-rendering: optimizeLegibility;
+  }
+
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    will-change: transform;
+  }
+
+  .spinner-wrapper {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .content .planet {
-    width: 65%;
-    height: 65%;
-    background-color: #546c8c;
-    border-radius: 100%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    transform-origin: center center;
-    box-shadow: inset 2px -10px 0px rgba(0, 0, 0, 0.1);
-    animation: planet 5s ease infinite alternate;
-    /* planet ring */
-    /* to cover the back of the ring */
-    /* planet spots */
-  }
-
-  @keyframes planet {
-    0% {
-      transform: rotate(10deg);
-    }
-
-    100% {
-      transform: rotate(-10deg);
-    }
-  }
-
-  .content .planet .ring {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 100%;
-    background-color: #bacbd9;
+    width: var(--loading-spinner-size);
+    height: var(--loading-spinner-size);
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-origin: 33% center;
-    box-shadow: 2px -10px 0px rgba(0, 0, 0, 0.1), inset -5px -10px 0px rgba(0, 0, 0, 0.1);
-    animation: ring 3s ease infinite;
-    /* small ball */
-    /* inner ring */
   }
 
-  @keyframes ring {
-    0% {
-      transform: rotateX(110deg) rotateZ(0deg) translate(-50px, 5px);
-    }
-
-    100% {
-      transform: rotateX(110deg) rotateZ(360deg) translate(-50px, 5px);
-    }
-  }
-
-  .content .planet .ring:before {
-    content: "";
+  .spinner-ring {
     position: absolute;
-    width: 10px;
-    height: 30px;
-    border-radius: 100%;
-    background-color: #7ea1bf;
-    z-index: 2;
-    left: calc(0px - 5px);
-    box-shadow: inset -3px 3px 0px rgba(0, 0, 0, 0.2);
-  }
-
-  .content .planet .ring:after {
-    content: "";
-    position: absolute;
-    width: 240px;
-    height: 240px;
-    border-radius: 100%;
-    background-color: #7ea1bf;
-    box-shadow: inset 2px -10px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  .content .planet .cover-ring {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    border-bottom-left-radius: 80%;
-    border-bottom-right-radius: 80%;
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px;
-    transform: translate(0px, -17px);
-    background-color: #546c8c;
-    z-index: 2;
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  .content .planet .spots {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--loading-primary);
+    border-right-color: var(--loading-primary);
+    animation: spinner-rotate 1s linear infinite;
+    will-change: transform;
+  }
+
+  .spinner-ring::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--loading-primary-light);
+    animation: spinner-rotate 2s linear infinite;
+  }
+
+  .spinner-ring::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--loading-primary-dark);
+    animation: spinner-rotate 3s linear infinite;
+  }
+
+  .spinner-center {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--loading-primary) 0%, var(--loading-primary-dark) 100%);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    z-index: 2;
+    box-shadow: 
+      0 4px 20px rgb(24 144 255 / 35%),
+      0 0 0 4px rgb(24 144 255 / 10%);
+    animation: spinner-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: transform, box-shadow;
   }
 
-  .content .planet .spots span {
-    width: 30px;
-    height: 30px;
-    background-color: #3c4359;
-    position: absolute;
-    border-radius: 100%;
-    box-shadow: inset -2px 3px 0px rgba(0, 0, 0, 0.3);
-    animation: dots 5s ease infinite alternate;
+  .spinner-icon {
+    width: 36px;
+    height: 36px;
+    fill: white;
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 20%));
+    animation: icon-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    will-change: transform, filter;
   }
 
-  @keyframes dots {
+  @keyframes spinner-rotate {
     0% {
-      box-shadow: inset -3px 3px 0px rgba(0, 0, 0, 0.3);
+      transform: rotate(0deg);
     }
-
     100% {
-      box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.3);
+      transform: rotate(360deg);
     }
   }
 
-  .content .planet .spots span:nth-child(1) {
-    top: 20px;
-    right: 50px;
-  }
-
-  .content .planet .spots span:nth-child(2) {
-    top: 40px;
-    left: 50px;
-    width: 15px;
-    height: 15px;
-  }
-
-  .content .planet .spots span:nth-child(3) {
-    top: 80px;
-    left: 20px;
-    width: 25px;
-    height: 25px;
-  }
-
-  .content .planet .spots span:nth-child(4) {
-    top: 80px;
-    left: 90px;
-    width: 40px;
-    height: 40px;
-  }
-
-  .content .planet .spots span:nth-child(5) {
-    top: 160px;
-    left: 70px;
-    width: 15px;
-    height: 15px;
-  }
-
-  .content .planet .spots span:nth-child(6) {
-    top: 165px;
-    left: 125px;
-    width: 10px;
-    height: 10px;
-  }
-
-  .content .planet .spots span:nth-child(7) {
-    top: 90px;
-    left: 150px;
-    width: 15px;
-    height: 15px;
-  }
-
-  .content p {
-    color: #bacbd9;
-    font-size: 14px;
-    z-index: 2;
-    position: absolute;
-    bottom: -20px;
-    font-family: "Roboto Mono", monospace;
-    animation: text 4s ease infinite;
-    width: 100px;
-    text-align: center;
-  }
-
-  @keyframes text {
-    0% {
-      transform: translateX(-30px);
-      letter-spacing: 0px;
-      color: #bacbd9;
+  @keyframes spinner-pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 
+        0 4px 20px rgb(24 144 255 / 35%),
+        0 0 0 4px rgb(24 144 255 / 10%);
     }
-
-    25% {
-      letter-spacing: 3px;
-      color: #7ea1bf;
-    }
-
     50% {
-      transform: translateX(30px);
-      letter-spacing: 0px;
-      color: #bacbd9;
+      transform: scale(1.08);
+      box-shadow: 
+        0 6px 30px rgb(24 144 255 / 50%),
+        0 0 0 8px rgb(24 144 255 / 15%);
     }
+  }
 
-    75% {
-      letter-spacing: 3px;
-      color: #7ea1bf;
+  @keyframes icon-pulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: drop-shadow(0 2px 4px rgb(0 0 0 / 20%));
     }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 4px 12px rgb(0 0 0 / 30%));
+    }
+  }
 
+  .percentage {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--loading-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+    letter-spacing: 0.5px;
+    will-change: opacity, transform;
+  }
+
+  .percentage.updating {
+    animation: number-pop 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes number-pop {
+    0% {
+      opacity: 0.6;
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
     100% {
-      transform: translateX(-30px);
-      letter-spacing: 0px;
-      color: #bacbd9;
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .progress-container {
+    width: 300px;
+    max-width: 80vw;
+  }
+
+  .progress-bg {
+    width: 100%;
+    height: 6px;
+    background-color: var(--loading-border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 10%);
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      var(--loading-primary) 0%,
+      var(--loading-primary-light) 50%,
+      var(--loading-primary) 100%
+    );
+    background-size: 200% 100%;
+    border-radius: 6px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    will-change: width;
+    box-shadow: 
+      0 0 10px rgb(24 144 255 / 40%),
+      0 0 20px rgb(24 144 255 / 20%);
+  }
+
+  .progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(255 255 255 / 30%) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: progress-shimmer 1.5s linear infinite;
+  }
+
+  .progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background: white;
+    box-shadow: 
+      0 0 10px white,
+      0 0 20px rgb(24 144 255 / 80%);
+    opacity: 0.9;
+    filter: blur(1px);
+  }
+
+  @keyframes progress-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .status-text {
+    font-size: 14px;
+    color: var(--loading-text-secondary-light);
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.5px;
+    min-height: 20px;
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+    font-weight: 500;
+  }
+
+  .status-text.fade-out {
+    opacity: 0;
+  }
+
+  .loading-tips {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--loading-text-tertiary-light);
+    text-align: center;
+    max-width: 400px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  @media (max-width: 768px) {
+    .loading .title {
+      font-size: 24px;
+      margin-top: 36px;
+    }
+
+    .spinner-wrapper {
+      width: var(--loading-spinner-size-mobile);
+      height: var(--loading-spinner-size-mobile);
+    }
+
+    .spinner-center {
+      width: 55px;
+      height: 55px;
+    }
+
+    .spinner-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .percentage {
+      font-size: 26px;
+    }
+
+    .progress-container {
+      width: 240px;
+    }
+
+    .loading-tips {
+      font-size: 11px;
+      padding: 0 20px;
+    }
+
+    .loading-container {
+      gap: 24px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    :root {
+      --loading-spinner-size: 140px;
+    }
+
+    .loading .title {
+      font-size: 36px;
+    }
+
+    .percentage {
+      font-size: 36px;
+    }
+
+    .progress-container {
+      width: 360px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spinner-ring,
+    .spinner-ring::before,
+    .spinner-ring::after,
+    .spinner-center,
+    .spinner-icon,
+    .progress-bar,
+    .progress-bar::before {
+      animation: none;
     }
   }
 </style>
-<div class="loading" id="__app-loading__">
-  <div class="content">
-    <div class="planet">
-      <div class="ring"></div>
-      <div class="cover-ring"></div>
-      <div class="spots">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
 
+<div class="loading" id="__app-loading__">
+  <div class="loading-container">
+    <div class="spinner-wrapper">
+      <div class="spinner-ring"></div>
+      <div class="spinner-center">
+        <svg class="spinner-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+        </svg>
       </div>
     </div>
+
+    <div class="percentage" id="loading-percentage" aria-live="polite" aria-atomic="true">0%</div>
+
+    <div class="progress-container">
+      <div class="progress-bg" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="加载进度">
+        <div class="progress-bar" id="loading-progress" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div class="status-text" id="loading-status">正在初始化...</div>
   </div>
 
   <div class="title">
     <%= VITE_APP_TITLE %>
   </div>
+
+  <div class="loading-tips">
+    首次加载可能需要较长时间，请耐心等待...
+  </div>
 </div>
+
+<script>
+  (function() {
+    'use strict';
+
+    const STAGES = [
+      { percent: 15, text: '正在加载资源...' },
+      { percent: 30, text: '正在解析配置...' },
+      { percent: 50, text: '正在初始化组件...' },
+      { percent: 70, text: '正在准备界面...' },
+      { percent: 85, text: '正在加载数据...' },
+      { percent: 95, text: '即将完成...' },
+      { percent: 100, text: '加载完成！' }
+    ];
+
+    const DELAY_BASE = 150;
+    const DELAY_VARIANCE = 200;
+    const HIDE_DELAY = 600;
+
+    let currentProgress = 0;
+    let currentStageIndex = 0;
+    let animationFrameId = null;
+
+    const elements = {
+      loading: null,
+      progress: null,
+      percentage: null,
+      status: null,
+      progressContainer: null
+    };
+
+    function cacheElements() {
+      elements.loading = document.getElementById('__app-loading__');
+      elements.progress = document.getElementById('loading-progress');
+      elements.percentage = document.getElementById('loading-percentage');
+      elements.status = document.getElementById('loading-status');
+      elements.progressContainer = elements.progress?.closest('[role="progressbar"]');
+    }
+
+    function updateProgressUI(progress) {
+      if (!elements.progress || !elements.percentage) return;
+
+      elements.progress.style.width = progress + '%';
+      elements.percentage.textContent = progress + '%';
+
+      if (elements.progressContainer) {
+        elements.progressContainer.setAttribute('aria-valuenow', progress.toString());
+      }
+
+      elements.percentage.classList.remove('updating');
+      void elements.percentage.offsetHeight;
+      elements.percentage.classList.add('updating');
+    }
+
+    function updateStatusText(text) {
+      if (!elements.status) return;
+
+      elements.status.classList.add('fade-out');
+      
+      setTimeout(() => {
+        elements.status.textContent = text;
+        elements.status.classList.remove('fade-out');
+      }, 125);
+    }
+
+    function simulateProgress() {
+      if (currentStageIndex >= STAGES.length) {
+        hideLoading();
+        return;
+      }
+
+      const stage = STAGES[currentStageIndex];
+      const targetProgress = stage.percent;
+
+      if (currentProgress < targetProgress) {
+        currentProgress++;
+        
+        if (currentProgress === targetProgress) {
+          updateStatusText(stage.text);
+          currentStageIndex++;
+        }
+
+        updateProgressUI(currentProgress);
+
+        const delay = DELAY_BASE + Math.random() * DELAY_VARIANCE;
+        animationFrameId = setTimeout(simulateProgress, delay);
+      } else {
+        currentStageIndex++;
+        simulateProgress();
+      }
+    }
+
+    function hideLoading() {
+      if (!elements.loading) return;
+
+      setTimeout(() => {
+        elements.loading.classList.add('hidden');
+        
+        if (animationFrameId) {
+          clearTimeout(animationFrameId);
+          animationFrameId = null;
+        }
+
+        setTimeout(() => {
+          if (elements.loading && elements.loading.parentNode) {
+            elements.loading.style.display = 'none';
+          }
+        }, 500);
+      }, HIDE_DELAY);
+    }
+
+    function forceComplete() {
+      currentStageIndex = STAGES.length;
+      currentProgress = 100;
+      updateProgressUI(100);
+      updateStatusText('加载完成！');
+      hideLoading();
+    }
+
+    function init() {
+      cacheElements();
+
+      if (!elements.loading) {
+        console.error('[Loading] Loading element not found');
+        return;
+      }
+
+      const startDelay = 300;
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function onLoad() {
+          document.removeEventListener('DOMContentLoaded', onLoad);
+          setTimeout(simulateProgress, startDelay);
+        });
+      } else {
+        setTimeout(simulateProgress, startDelay);
+      }
+
+      window.addEventListener('load', function onLoad() {
+        window.removeEventListener('load', onLoad);
+        forceComplete();
+      }, { once: true });
+
+      window.addEventListener('error', function onError() {
+        window.removeEventListener('error', onError);
+        forceComplete();
+      }, { once: true });
+
+      const timeoutId = setTimeout(forceComplete, 15000);
+
+      if (window.addEventListener) {
+        window.addEventListener('load', function() {
+          clearTimeout(timeoutId);
+        }, { once: true });
+      }
+    }
+
+    if (document.readyState !== 'complete') {
+      init();
+    } else {
+      setTimeout(init, 50);
+    }
+  })();
+</script>
