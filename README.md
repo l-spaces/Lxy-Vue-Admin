@@ -1,6 +1,6 @@
-# Lxy-Vue-Admin
-
 <div align="center">
+
+# Lxy-Vue-Admin
 
 **基于 Vben Admin 5 + Ant Design Vue Next 的企业级中后台管理系统**
 
@@ -11,7 +11,7 @@
 [![Vben Admin](https://img.shields.io/badge/Vben-5.7.0-blue.svg)](https://github.com/vbenjs/vue-vben-admin)
 [![Node Version](https://img.shields.io/badge/Node-%5E20.19.0%20%7C%20%5E22.18.0%20%7C%20%5E24.0.0-green.svg)](https://nodejs.org/)
 
-[📖 开发文档](./docs/开发文档.md) | [📦 Packages 文档](./docs/packages 目录说明文档.md) | [🔧 Internal 文档](./docs/internal 目录说明文档.md)
+[📖 开发文档](./docs/开发文档.md) | [📦 Packages 文档](./packages/README.md) | [🔧 Internal 文档](./internal/README.md)
 
 </div>
 
@@ -98,7 +98,7 @@ Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，
 #### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-username/lxy-vue-admin.git
+git clone https://gitee.com/my_spaces/lxy-vue-admin.git
 cd lxy-vue-admin
 ```
 
@@ -418,7 +418,7 @@ pnpm commit
 
 ### 分支管理
 
-- `main`: 主分支
+- `master`: 主分支
 - `develop`: 开发分支
 - `feature/*`: 功能分支
 - `bugfix/*`: Bug 修复分支
@@ -442,8 +442,8 @@ pnpm test:e2e
 ## 📚 文档
 
 - [📖 开发文档](./docs/开发文档.md) - 完整的开发指南
-- [📦 Packages 文档](./docs/packages 目录说明文档.md) - 共享包详细说明
-- [🔧 Internal 文档](./docs/internal 目录说明文档.md) - 内部工具配置说明
+- [📦 Packages 文档](./docs/packages目录说明文档.md) - 共享包详细说明
+- [🔧 Internal 文档](./docs/internal目录说明文档.md) - 内部工具配置说明
 
 ---
 
@@ -500,36 +500,7 @@ pnpm check:cspell  # 拼写检查
 
 本项目采用 [MIT](LICENSE) 许可证。
 
-```
-MIT License
-
-Copyright (c) 2024 Lxy-Vue-Admin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
 ---
-
-## 👥 团队
-
-- **Author**: [Vben](https://github.com/anncwb)
-- **Maintainer**: Lxy-Vue-Admin Team
 
 ---
 
@@ -538,17 +509,12 @@ SOFTWARE.
 - [Vue 3 文档](https://vuejs.org/)
 - [Vben Admin 文档](https://doc.vben.pro/)
 - [Ant Design Vue Next](https://github.com/antdv-next/antdv-next)
-- [RuoYi-Vue-Plus](https://github.com/0713wy/ruoyi-vue-plus)
 - [TypeScript 文档](https://www.typescriptlang.org/)
 - [Vite 文档](https://vitejs.dev/)
 - [Pinia 文档](https://pinia.vuejs.org/)
 
 ---
 
-## 📮 联系方式
-
-- **Issues**: [GitHub Issues](https://github.com/vbenjs/vue-vben-admin/issues)
-- **Email**: ann.vben@gmail.com
 
 ---
 
