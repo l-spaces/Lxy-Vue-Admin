@@ -1,187 +1,561 @@
-[![license](https://img.shields.io/github/license/anncwb/vue-vben-admin.svg)](LICENSE)
+# Lxy-Vue-Admin
 
-## 置顶说明
+<div align="center">
 
-使用`antdv-next`已经作为主分支进行更新
+**基于 Vben Admin 5 + Ant Design Vue Next 的企业级中后台管理系统**
 
-原`ant-design-vue`已经归档到`v1/ant-design-vue`分支 不再进行更新(当然你可以手动合并官方的更新)
+[Vue 3.5+](https://vuejs.org/) · [Vite 5+](https://vitejs.dev/) · [TypeScript 5+](https://www.typescriptlang.org/) · [Pinia](https://pinia.vuejs.org/) · [Ant Design Vue Next](https://github.com/antdv-next/antdv-next)
 
-## 提示
+[![License](https://img.shields.io/github/license/vbenjs/vue-vben-admin)](https://github.com/vbenjs/vue-vben-admin/blob/main/LICENSE)
+[![Vue Version](https://img.shields.io/badge/Vue-3.5.13-brightgreen.svg)](https://vuejs.org/)
+[![Vben Admin](https://img.shields.io/badge/Vben-5.7.0-blue.svg)](https://github.com/vbenjs/vue-vben-admin)
+[![Node Version](https://img.shields.io/badge/Node-%5E20.19.0%20%7C%20%5E22.18.0%20%7C%20%5E24.0.0-green.svg)](https://nodejs.org/)
 
-最低需要使用`node版本>22.16.0` 否则会影响编辑器的格式化(需要安装oxc插件)
+[📖 开发文档](./docs/开发文档.md) | [📦 Packages 文档](./docs/packages 目录说明文档.md) | [🔧 Internal 文档](./docs/internal 目录说明文档.md)
 
-该分支使用[antdv-next](https://github.com/antdv-next/antdv-next)替代已经不维护的antd-design-vue
+</div>
 
-该仓库使用vben最新版本v5开发
+---
 
-v5版本采用分仓(包)目录结构, 具体开发路径为: `根目录/apps/web-antd`
+## 📖 项目简介
 
-目前对应后端版本: **分布式5.6.0/微服务2.6.0**
+Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，基于 **Vben Admin 5** 和 **Ant Design Vue Next** 构建，与 **RuoYi-Vue-Plus** 后端框架深度集成。
 
-## 简介
+### ✨ 项目特性
 
-基于 [vben5 & antdv-next](https://github.com/vbenjs/vue-vben-admin) 的 RuoYi-Vue-Plus 前端项目
+- 🚀 **现代化架构**：采用 Vue 3.5 + Vite 5 + TypeScript 5，性能卓越
+- 🎨 **精美 UI 设计**：基于 Ant Design Vue Next 4.2，提供优雅的视觉体验
+- 🔐 **完善的权限管理**：支持基于角色和权限码的双重验证机制
+- 🌍 **国际化支持**：内置多语言支持，轻松实现全球化部署
+- 📱 **响应式布局**：完美适配 PC、平板、手机等多种设备
+- 🎯 **组件化开发**：提供 50+ 高质量可复用组件
+- 🔒 **数据加密**：支持 RSA + AES 双重加密，保障数据安全
+- 📊 **Monorepo 架构**：使用 pnpm + Turbo，高效管理多包项目
 
-| 组件/框架  | 版本   |
-| :--------- | :----- |
-| vben       | 5.5.9  |
-| antdv-next | 4.2.6  |
-| vue        | 3.5.13 |
+### 🎯 适用场景
 
-对应后端项目: **(分布式 5.X 分支 微服务 2.分支)**
+- 企业中后台管理系统
+- SaaS 平台前端
+- 数据可视化大屏
+- 多租户管理系统
+- 工作流管理系统
 
-分布式 [RuoYi-Vue-Plus](https://gitee.com/dromara/RuoYi-Vue-Plus/tree/5.X/)
+---
 
-微服务 [RuoYi-Cloud-Plus](https://gitee.com/dromara/RuoYi-Cloud-Plus/tree/2.X/)
+## 🛠️ 技术栈选型
 
-## 预览
+### 核心框架
 
-admin 账号: admin admin123
+| 技术 | 版本 | 说明 |
+|------|------|------|
+| [Vue](https://vuejs.org/) | 3.5.13 | 渐进式 JavaScript 框架 |
+| [Vben Admin](https://github.com/vbenjs/vue-vben-admin) | 5.7.0 | 企业级中后台前端解决方案 |
+| [Ant Design Vue Next](https://github.com/antdv-next/antdv-next) | 4.2.6 | 基于 Vue 3 的企业级 UI 组件库 |
+| [Vue Router](https://router.vuejs.org/) | 4.x | Vue.js 官方路由管理器 |
+| [Pinia](https://pinia.vuejs.org/) | 2.x | Vue 3 推荐的状态管理库 |
+| [TypeScript](https://www.typescriptlang.org/) | 5.x | JavaScript 的超集 |
+| [Vite](https://vitejs.dev/) | 5.x | 下一代前端构建工具 |
 
-[预览地址点这里](http://vben5.dapdap.top)
+### 工具库
 
-## WX Group
+| 技术 | 说明 |
+|------|------|
+| [VueUse](https://vueuse.org/) | 实用的 Vue 3 组合式 API 工具集 |
+| [Alova](https://alova.js.org/) | 轻量级请求库 |
+| [Axios](https://axios-http.com/) | HTTP 客户端 |
+| [Day.js](https://day.js.org/) | 日期处理库 |
+| [ECharts](https://echarts.apache.org/) | 数据可视化图表库 |
+| [Lodash-es](https://lodash.com/) | JavaScript 工具库 |
+| [Crypto-js](https://github.com/brix/crypto-js) | 加密库 |
+| [JsEncrypt](https://github.com/travist/jsencrypt) | RSA 加密库 |
 
-演示站 - 微信群菜单
+### 开发工具
 
-## 文档
+| 工具 | 说明 |
+|------|------|
+| [ESLint](https://eslint.org/) | 代码检查 |
+| [Oxlint](https://github.com/oxc-project/oxc) | 基于 Rust 的快速代码检查 |
+| [Stylelint](https://stylelint.io/) | CSS/SCSS 代码检查 |
+| [Commitlint](https://commitlint.js.org/) | Git 提交规范检查 |
+| [Prettier](https://prettier.io/) | 代码格式化 |
+| [Vitest](https://vitest.dev/) | 单元测试框架 |
+| [Playwright](https://playwright.dev/) | E2E 测试框架 |
 
-[本框架文档 强烈建议阅读](https://dapdap.top/)
+---
 
-[Vben V5 文档地址](https://doc.vben.pro/)
+## 📦 安装与配置
 
-[RuoYi-Plus 文档地址](https://plus-doc.dromara.org/#/)
+### 环境要求
 
-## 预览图
+- **Node.js**: ^20.19.0 或 ^22.18.0 或 ^24.0.0
+- **pnpm**: >= 10.0.0
+- **Git**: 最新版本
 
-![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/1.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/2.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/3.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/4.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/5.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/6.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/7.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/8.png) ![图片](https://github.com/imdap/ruoyi-plus-vben5/raw/main/scripts/preview/9.png)
+> ⚠️ **重要提示**：请使用推荐的 Node.js 版本，版本不兼容可能导致依赖安装失败。
 
-## 安装使用
+### 安装步骤
 
-前置准备环境(只能用pnpm)
-
-```json
-"packageManager": "pnpm",
-"engines": {
-  "node": ">=22.16.0",
-  "pnpm": "latest"
-},
-```
-
-- 获取项目代码
+#### 1. 克隆项目
 
 ```bash
-git clone https://github.com/imdap/ruoyi-plus-vben5.git
+git clone https://github.com/your-username/lxy-vue-admin.git
+cd lxy-vue-admin
 ```
 
-2. 安装依赖
+#### 2. 安装依赖
 
 ```bash
-cd ruoyi-plus-vben5
-
+# 使用 pnpm 安装依赖（推荐）
 pnpm install
+
+# 或使用以下命令
+npm install -g pnpm
+pnpm bootstrap
 ```
 
-- 菜单图标替换
+#### 3. 启动开发服务器
 
-参考 [菜单图标替换](https://dapdap.top/guide/quick-start.html#%E8%8F%9C%E5%8D%95%E5%9B%BE%E6%A0%87%E5%AF%BC%E5%85%A5)
+```bash
+# 启动 web-antd 应用
+pnpm dev:antd
 
-- 关于一些监控的地址配置(微服务版本可以跳过这一小节)
-
-使用[RuoYi-Vue-Plus](https://gitee.com/dromara/RuoYi-Vue-Plus/tree/5.X/)注意 `已经去除 admin/snailjob 的.env 配置` 可自行修改 有两种方式
-
-1. 修改源码`/views/monitor/admin` `views/monitor/snailjob`
-
-```html
-<!-- 修改地址 -->
-<template>
-  <iframe
-    class="size-full"
-    src="http://localhost:9090/admin/applications"
-  ></iframe>
-</template>
+# 或使用通用开发命令
+pnpm dev
 ```
 
-2. **推荐** 使用菜单自行配置 (跟 cloud 版本打开方式一致)
+启动成功后，访问：`http://localhost:5666`
 
-![图片](https://github.com/imdap/ruoyi-plus-vben/raw/main/preview/菜单修改.png)
+#### 4. 打包构建
 
-使用内嵌 iframe 方式需要解决跨域问题 可参考[nginx.conf](https://gitee.com/dromara/RuoYi-Vue-Plus/blob/5.X/script/docker/nginx/conf/nginx.conf#LC87)配置
+```bash
+# 构建所有应用
+pnpm build
 
-- 修改.env.development 配置文件
-- **注意 RSA 公私钥一定要修改和后端匹配**
-- RSA 公私钥为两对 `前端请求加密-后端解密是一对` `后端响应加密 前端解密是一对`
+# 仅构建 web-antd 应用
+pnpm build:antd
 
-```properties
+# 构建分析
+pnpm build:analyze
+```
+
+---
+
+## 🚀 基本使用方法
+
+### 开发环境配置
+
+项目使用环境变量进行配置，主要配置文件：
+
+- `.env.development` - 开发环境配置
+- `.env.production` - 生产环境配置
+- `.env.test` - 测试环境配置
+
+#### 关键配置项
+
+```bash
 # 端口号
 VITE_PORT=5666
-# 打包路径
-VITE_BASE=/
-# 是否开启 Nitro Mock服务，true 为开启，false 为关闭
-VITE_NITRO_MOCK=false
-# 是否打开 devtools，true 为打开，false 为关闭
-VITE_DEVTOOLS=false
-# 是否注入全局loading
-VITE_INJECT_APP_LOADING=true
 
-# 后台请求路径 具体在vite.config.mts配置代理
+# API 请求地址
 VITE_GLOB_API_URL=/api
-# 全局加密开关(即开启了加解密功能才会生效 不是全部接口加密 需要和后端对应)
+
+# 是否启用加密
 VITE_GLOB_ENABLE_ENCRYPT=true
-# RSA公钥 请求加密使用 注意这两个是两对RSA公私钥 请求加密-后端解密是一对 响应解密-后端加密是一对
-VITE_GLOB_RSA_PUBLIC_KEY=
-# RSA私钥 响应解密使用 注意这两个是两对RSA公私钥 请求加密-后端解密是一对 响应解密-后端加密是一对
-VITE_GLOB_RSA_PRIVATE_KEY=
-# 客户端id
+
+# RSA 公钥（请求加密）
+VITE_GLOB_RSA_PUBLIC_KEY=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKoR8mX0rGKLqzcWmOzbfj64K8ZIgOdHnzkXSOVOZbFu/TJhZ7rFAN+eaGkl3C4buccQd/EjEsj9ir7ijT7h96MCAwEAAQ==
+
+# RSA 私钥（响应解密）
+VITE_GLOB_RSA_PRIVATE_KEY=MIIBVAIBADANBgkqhkiG9w0BAQEFAASCAT4wggE6AgEAAkEAmc3CuPiGL/LcIIm7zryCEIbl1SPzBkr75E2VMtxegyZ1lYRD+7TZGAPkvIsBcaMs6Nsy0L78n2qh+lIZMpLH8wIDAQAB
+
+# 客户端 ID
 VITE_GLOB_APP_CLIENT_ID=e5cd7e4891bf95d1d19206ce24a7b32e
-# 开启WEBSOCKET
+
+# SSE 消息推送
+VITE_GLOB_SSE_ENABLE=true
+
+# WebSocket 消息推送
 VITE_GLOB_WEBSOCKET_ENABLE=false
 ```
 
-- 运行
+### 代理配置
+
+开发环境下需要配置代理以解决跨域问题。代理配置在 `apps/web-antd/vite.config.mts` 中：
+
+```typescript
+export default defineApplicationConfig({
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+});
+```
+
+### 默认登录信息
+
+- **用户名**: `admin`
+- **密码**: `123456`
+
+---
+
+## 📁 目录结构说明
+
+### 整体目录结构
+
+```
+lxy-vue-admin/
+├── apps/                      # 应用目录
+│   └── web-antd/             # Ant Design Vue 应用
+│       ├── src/              # 源代码目录
+│       ├── public/           # 公共资源
+│       ├── index.html        # HTML 模板
+│       └── package.json      # 依赖配置
+├── packages/                  # 共享包目录
+│   ├── @core/               # 核心包
+│   │   ├── base/           # 基础包（设计系统、图标、共享工具等）
+│   │   ├── composables/    # 组合式函数
+│   │   ├── preferences/    # 偏好设置
+│   │   └── ui-kit/         # UI 组件库
+│   ├── constants/          # 常量定义
+│   ├── effects/            # 功能包
+│   │   ├── access/        # 权限管理
+│   │   ├── common-ui/     # 通用 UI 组件
+│   │   ├── hooks/         # 钩子函数
+│   │   └── layouts/       # 布局组件
+│   ├── hooks/              # 钩子函数
+│   ├── icons/              # 图标组件
+│   ├── locales/            # 国际化
+│   ├── preferences/        # 偏好设置
+│   ├── stores/             # 状态管理
+│   ├── styles/             # 样式文件
+│   ├── types/              # 类型定义
+│   └── utils/              # 工具函数
+├── internal/                 # 内部工具配置
+│   ├── lint-configs/        # Lint 配置
+│   ├── node-utils/          # Node 工具
+│   ├── vite-config/         # Vite 配置
+│   ├── tsconfig/            # TypeScript 配置
+│   └── tailwind-config/     # Tailwind CSS 配置
+├── docs/                     # 文档目录
+│   ├── 开发文档.md          # 开发文档
+│   ├── packages 目录说明文档.md  # Packages 文档
+│   └── internal 目录说明文档.md  # Internal 文档
+├── scripts/                  # 脚本目录
+├── package.json              # 项目配置
+├── pnpm-workspace.yaml       # pnpm 工作区配置
+├── turbo.json                # Turbo 配置
+└── README.md                 # 项目说明
+```
+
+### 核心目录详解
+
+#### `apps/web-antd/src/` 目录结构
+
+```
+src/
+├── api/                      # API 接口目录
+│   ├── core/                # 核心接口（认证、用户、菜单等）
+│   └── modules/             # 业务模块接口
+├── components/               # 组件目录
+│   ├── common/              # 通用组件
+│   └── business/            # 业务组件
+├── config/                   # 配置文件
+├── layouts/                  # 布局组件
+├── locales/                  # 国际化文件
+│   ├── zh-CN/               # 中文
+│   └── en/                  # 英文
+├── router/                   # 路由配置
+├── store/                    # 状态管理
+├── styles/                   # 样式文件
+├── types/                    # 类型定义
+├── utils/                    # 工具函数
+├── views/                    # 页面目录
+│   ├── _core/               # 核心页面（登录、404 等）
+│   ├── dashboard/           # 仪表盘
+│   ├── system/              # 系统管理
+│   └── workflow/            # 工作流
+├── app.vue                   # 根组件
+└── main.ts                   # 入口文件
+```
+
+---
+
+## 🏗️ 架构设计
+
+### 技术架构
+
+```
+┌─────────────────────────────────────────────────┐
+│                   应用层 (Apps)                  │
+│              web-antd (Ant Design)              │
+└─────────────────────────────────────────────────┘
+                       ↓
+┌─────────────────────────────────────────────────┐
+│                  功能包层 (Effects)               │
+│  access | common-ui | hooks | layouts | locales │
+└─────────────────────────────────────────────────┘
+                       ↓
+┌─────────────────────────────────────────────────┐
+│                  核心包层 (Core)                  │
+│   base | composables | preferences | ui-kit    │
+└─────────────────────────────────────────────────┘
+                       ↓
+┌─────────────────────────────────────────────────┐
+│                  工具层 (Utils)                   │
+│   constants | stores | types | utils | icons   │
+└─────────────────────────────────────────────────┘
+```
+
+### Monorepo 架构
+
+项目采用 **Monorepo** 架构，使用 **pnpm workspace** + **Turbo** 进行包管理和构建优化。
+
+**优势：**
+- 📦 代码复用：共享包可在多个应用间复用
+- 🔧 统一规范：统一的代码规范、构建配置
+- 🚀 构建优化：Turbo 缓存加速构建
+- 📊 依赖管理：集中管理依赖版本
+
+---
+
+## 🔌 核心功能模块
+
+### 1. 认证授权模块
+
+- 支持账号密码登录、验证码登录、二维码登录
+- Token 自动刷新机制
+- 基于角色和权限码的双重验证
+- 登录过期自动处理
+
+### 2. 路由权限模块
+
+- 动态路由加载（支持后端方式）
+- 路由守卫和权限验证
+- 菜单自动生成
+- 路由缓存和预加载
+
+### 3. 状态管理模块
+
+- **useAccessStore**: 权限管理（Token、菜单、路由）
+- **useUserStore**: 用户信息管理
+- **useTabbarStore**: 标签栏管理
+- **useTimezoneStore**: 时区管理
+
+### 4. 组件系统
+
+提供 50+ 高质量组件：
+
+- **基础组件**: Button、Input、Table、Form 等
+- **业务组件**: 上传、富文本、代码编辑器、Markdown 等
+- **验证码组件**: 点选、滑动、旋转、平移验证码
+- **布局组件**: Page、ColPage、Tree 等
+
+### 5. 国际化模块
+
+- 支持中文、英文等多语言
+- 动态语言切换
+- 语言包懒加载
+
+### 6. 数据加密模块
+
+- RSA 非对称加密（请求加密）
+- AES 对称加密（数据加密）
+- 国密 SM2/SM4 支持
+
+### 7. 消息推送模块
+
+- SSE (Server-Sent Events) 消息推送
+- WebSocket 实时通信
+- 系统通知中心
+
+---
+
+## 📝 开发规范
+
+### 代码规范
+
+项目使用 **ESLint** + **Oxlint** + **Stylelint** + **Prettier** 保证代码质量。
 
 ```bash
+# 代码检查
+pnpm lint
+
+# 代码格式化
+pnpm format
+
+# 类型检查
+pnpm check:type
+```
+
+### 提交规范
+
+使用 **Commitlint** 规范 Git 提交信息。
+
+```bash
+# 交互式提交
+pnpm commit
+
+# 格式：<type>(<scope>): <subject>
+# 示例：feat(system): add user management page
+```
+
+**Type 类型：**
+- `feat`: 新功能
+- `fix`: Bug 修复
+- `docs`: 文档更新
+- `style`: 代码格式调整
+- `refactor`: 重构
+- `perf`: 性能优化
+- `test`: 测试相关
+- `chore`: 构建/工具链相关
+- `ci`: CI 配置
+- `build`: 打包构建
+
+### 分支管理
+
+- `main`: 主分支
+- `develop`: 开发分支
+- `feature/*`: 功能分支
+- `bugfix/*`: Bug 修复分支
+- `release/*`: 发布分支
+- `hotfix/*`: 紧急修复分支
+
+---
+
+## 🧪 测试
+
+```bash
+# 单元测试
+pnpm test:unit
+
+# E2E 测试
+pnpm test:e2e
+```
+
+---
+
+## 📚 文档
+
+- [📖 开发文档](./docs/开发文档.md) - 完整的开发指南
+- [📦 Packages 文档](./docs/packages 目录说明文档.md) - 共享包详细说明
+- [🔧 Internal 文档](./docs/internal 目录说明文档.md) - 内部工具配置说明
+
+---
+
+## 🤝 贡献指南
+
+我们欢迎各种形式的贡献！
+
+### 如何贡献
+
+1. Fork 本项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'feat: add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 创建 Pull Request
+
+### 开发流程
+
+```bash
+# 1. 克隆项目
+git clone https://github.com/your-username/lxy-vue-admin.git
+cd lxy-vue-admin
+
+# 2. 安装依赖
+pnpm install
+
+# 3. 创建分支
+git checkout -b feature/your-feature
+
+# 4. 开发并测试
 pnpm dev:antd
+
+# 5. 提交代码
+pnpm commit
+
+# 6. 推送并创建 PR
+git push origin feature/your-feature
 ```
 
-4. 打包
+### 代码规范检查
 
 ```bash
-pnpm build:antd
+# 完整检查
+pnpm check
+
+# 单独检查
+pnpm lint          # ESLint
+pnpm check:type    # TypeScript
+pnpm check:cspell  # 拼写检查
 ```
 
-## 这是一个特性 而不是一个bug!
+---
 
-1. 菜单管理可分配 但只有`admin`/`superadmin`角色能访问 其他角色访问会到403页面
-2. 租户相关菜单可分配 但只有`superadmin`角色能访问 其他角色访问会到403页面
-3. 分配的租户管理员无法修改自己的角色的菜单(即管理员角色的菜单) 防止自己把自己权限弄没了
+## 📄 许可证
 
-## Git 贡献提交规范
+本项目采用 [MIT](LICENSE) 许可证。
 
-参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
+```
+MIT License
 
-- `feat` 增加新功能
-- `fix` 修复问题/BUG
-- `style` 代码风格相关无影响运行结果的
-- `perf` 优化/性能提升
-- `refactor` 重构
-- `revert` 撤销修改
-- `test` 测试相关
-- `docs` 文档/注释
-- `chore` 依赖更新/脚手架配置修改等
-- `workflow` 工作流改进
-- `ci` 持续集成
-- `types` 类型定义文件更改
-- `wip` 开发中
+Copyright (c) 2024 Lxy-Vue-Admin
 
-## 浏览器支持
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-最低适配应该为`Chrome 88+`以上浏览器 详见 [css - where](https://developer.mozilla.org/en-US/docs/Web/CSS/:where#browser_compatibility)
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-本地开发推荐使用`Chrome` 最新版本浏览器
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
-支持现代浏览器，不支持 IE
+---
 
-| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>IE | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt=" Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :-: | :-: | :-: | :-: | :-: |
-| not support | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+## 👥 团队
+
+- **Author**: [Vben](https://github.com/anncwb)
+- **Maintainer**: Lxy-Vue-Admin Team
+
+---
+
+## 🔗 相关链接
+
+- [Vue 3 文档](https://vuejs.org/)
+- [Vben Admin 文档](https://doc.vben.pro/)
+- [Ant Design Vue Next](https://github.com/antdv-next/antdv-next)
+- [RuoYi-Vue-Plus](https://github.com/0713wy/ruoyi-vue-plus)
+- [TypeScript 文档](https://www.typescriptlang.org/)
+- [Vite 文档](https://vitejs.dev/)
+- [Pinia 文档](https://pinia.vuejs.org/)
+
+---
+
+## 📮 联系方式
+
+- **Issues**: [GitHub Issues](https://github.com/vbenjs/vue-vben-admin/issues)
+- **Email**: ann.vben@gmail.com
+
+---
+
+<div align="center">
+
+**如果这个项目对你有帮助，请给一个 ⭐️ Star 支持一下！**
+
+Made with ❤️ by Lxy-Vue-Admin Team
+
+</div>
