@@ -2,11 +2,6 @@ import type { RouteRecordRaw } from 'vue-router';
 
 import { $t } from '#/locales';
 
-const {
-  version,
-  // vite inject-metadata 插件注入的全局变量
-} = __VBEN_ADMIN_METADATA__ || {};
-
 const routes: RouteRecordRaw[] = [
   {
     meta: {
