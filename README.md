@@ -19,7 +19,7 @@
 
 ## 📖 项目简介
 
-Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，基于 **Vben Admin 5** 和 **Ant Design Vue Next** 构建，与 **RuoYi-Vue-Plus** 后端框架深度集成。
+Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，基于 **Vben Admin 5** 和 **Ant Design Vue Next** 构建，与 **Lxy-Spring** 后端框架深度集成。
 
 ### ✨ 项目特性
 
