@@ -62,7 +62,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # 指定 Node.js 版本，需与项目依赖兼容
+          node-version: 24 # 指定 Node.js 版本，需与项目依赖兼容
           cache: pnpm # 启用依赖缓存机制，支持 npm/yarn/pnpm
 
       # 步骤 4：配置 GitHub Pages 环境
