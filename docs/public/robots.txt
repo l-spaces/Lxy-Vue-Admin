@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lxy-vue-admin.example.com/sitemap.xml

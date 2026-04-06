@@ -53,7 +53,10 @@
     "update:deps": "npx taze -r -w",
     "version": "pnpm exec changeset version && pnpm install --no-frozen-lockfile",
     "catalog": "pnpx codemod pnpm/catalog",
-    "generate-offline-icons": "node scripts/generate-offline-icons.js"
+    "generate-offline-icons": "node scripts/generate-offline-icons.js",
+    "docs:dev": "pnpm -F @lxy/docs run dev",
+    "docs:build": "pnpm -F @lxy/docs run build",
+    "docs:preview": "pnpm -F @lxy/docs run preview"
   },
   "devDependencies": {
     "@changesets/changelog-github": "catalog:",
