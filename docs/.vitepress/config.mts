@@ -1,13 +1,14 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: '/Lxy-Vue-Admin/',
   lang: 'zh-CN',
   title: 'Lxy-Vue-Admin',
   titleTemplate: ':title | Lxy-Vue-Admin 文档',
   description: '基于 Vben Admin 5 和 Ant Design Vue Next 的企业级中后台管理系统文档，提供完整的前端解决方案',
   
   head: [
-    ['meta', { charset: 'utf-8' }],
+    ['meta', { charset: 'utf8' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'theme-color', content: '#1890ff' }],
     ['meta', { name: 'author', content: 'Lxy-Vue-Admin Team' }],
@@ -27,7 +28,7 @@ export default defineConfig({
   ],
   
   sitemap: {
-    hostname: 'https://lxy-vue-admin.example.com',
+    hostname: 'https://l-spaces.github.io/Lxy-Vue-Admin/',
     lastmodDateOnly: true,
   },
   
