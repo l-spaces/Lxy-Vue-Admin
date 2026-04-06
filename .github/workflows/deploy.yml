@@ -10,7 +10,7 @@ on:
   #    - 分支名称可根据项目实际主分支调整（如 master）
   #    - 适用于日常开发中的文档更新场景
   push:
-    branches: [main]
+    branches: [master]
     paths:
       - 'docs/**'
       - '.github/workflows/deploy.yml'
