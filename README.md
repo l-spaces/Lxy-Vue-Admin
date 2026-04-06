@@ -11,7 +11,7 @@
 [![Vben Admin](https://img.shields.io/badge/Vben-5.7.0-blue.svg)](https://github.com/vbenjs/vue-vben-admin)
 [![Node Version](https://img.shields.io/badge/Node-%5E20.19.0%20%7C%20%5E22.18.0%20%7C%20%5E24.0.0-green.svg)](https://nodejs.org/)
 
-[📖 开发文档](./docs/开发文档.md) | [📦 Packages 文档](./packages/README.md) | [🔧 Internal 文档](./internal/README.md)
+[📖 开发文档](./docs/README.md) | [📦 Packages 文档](./packages/README.md) | [🔧 Internal 文档](./internal/README.md)
 
 </div>
 
@@ -441,9 +441,10 @@ pnpm test:e2e
 
 ## 📚 文档
 
-- [📖 开发文档](./docs/开发文档.md) - 完整的开发指南
-- [📦 Packages 文档](./docs/packages目录说明文档.md) - 共享包详细说明
-- [🔧 Internal 文档](./docs/internal目录说明文档.md) - 内部工具配置说明
+- [📖 开发文档中心](./docs/README.md) - 完整的开发文档索引
+- [🚀 快速开始](./docs/guide/01-项目概述.md) - 项目概述和快速开始
+- [📦 Packages 文档](./packages/README.md) - 共享包详细说明
+- [🔧 Internal 文档](./internal/README.md) - 内部工具配置说明
 
 ---
 
