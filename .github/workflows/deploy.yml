@@ -54,10 +54,9 @@ jobs:
                         # 若未启用此功能，可设置为 1 以提高克隆速度
 
       # 步骤 2：安装 pnpm 包管理器
+      # 版本由 package.json 中的 packageManager 字段指定 (Corepack)
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       # 步骤 3：安装并配置 Node.js 环境
       - name: Setup Node
