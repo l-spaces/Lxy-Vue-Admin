@@ -123,4 +123,4 @@ docs/scripts/
 
 - [Gitee 仓库](https://gitee.com/my_spaces/lxy-vue-admin)
 - [Vben Admin 官方文档](https://doc.vben.pro/)
-- [Ant Design Vue 文档](https://antdv.com/)
+- [Antdv Next 文档](https://antdv-next.com/)

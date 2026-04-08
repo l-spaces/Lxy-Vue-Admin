@@ -5,7 +5,7 @@ export default defineConfig({
   lang: 'zh-CN',
   title: 'Lxy-Vue-Admin',
   titleTemplate: ':title | Lxy-Vue-Admin 文档',
-  description: '基于 Vben Admin 5 和 Ant Design Vue Next 的企业级中后台管理系统文档，提供完整的前端解决方案',
+  description: '基于 Vben Admin 5 和 Antdv Next 的企业级中后台管理系统文档，提供完整的前端解决方案',
   
   head: [
     ['meta', { charset: 'utf8' }],
@@ -18,11 +18,11 @@ export default defineConfig({
     ['meta', { name: 'og:type', content: 'website' }],
     ['meta', { name: 'og:site_name', content: 'Lxy-Vue-Admin' }],
     ['meta', { name: 'og:title', content: 'Lxy-Vue-Admin - 企业级中后台管理系统' }],
-    ['meta', { name: 'og:description', content: '基于 Vben Admin 5 和 Ant Design Vue Next 的企业级中后台管理系统文档' }],
+    ['meta', { name: 'og:description', content: '基于 Vben Admin 5 和 Antdv Next 的企业级中后台管理系统文档' }],
     ['meta', { name: 'og:image', content: '/images/logo.svg' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: 'Lxy-Vue-Admin - 企业级中后台管理系统' }],
-    ['meta', { name: 'twitter:description', content: '基于 Vben Admin 5 和 Ant Design Vue Next 的企业级中后台管理系统文档' }],
+    ['meta', { name: 'twitter:description', content: '基于 Vben Admin 5 和 Antdv Next 的企业级中后台管理系统文档' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' }],
   ],

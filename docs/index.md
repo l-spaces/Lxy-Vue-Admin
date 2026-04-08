@@ -1,12 +1,12 @@
 ---
 layout: home
 title: 首页
-description: Lxy-Vue-Admin 是基于 Vben Admin 5 和 Ant Design Vue Next 开发的企业级中后台管理系统，提供完整的前端解决方案
+description: Lxy-Vue-Admin 是基于 Vben Admin 5 和 Antdv Next 开发的企业级中后台管理系统，提供完整的前端解决方案
 
 hero:
   name: "Lxy-Vue-Admin"
   text: "企业级中后台管理系统"
-  tagline: 基于 Vben Admin 5 和 Ant Design Vue Next 开发
+  tagline: 基于 Vben Admin 5 和 Antdv Next 开发
   image:
     src: /images/logo.svg
     alt: Lxy-Vue-Admin Logo
@@ -27,7 +27,7 @@ features:
     details: 完整的类型定义和类型检查，代码更加健壮，开发体验更好，减少运行时错误
   - icon: 🎨
     title: 组件化开发
-    details: 基于 Ant Design Vue Next 的高度封装组件系统，开箱即用，支持按需加载
+    details: 基于 Antdv Next 的高度封装组件系统，开箱即用，支持按需加载
   - icon: 🔐
     title: 权限管理
     details: 支持后端动态路由配置和权限控制，细粒度的权限管理，灵活的权限策略

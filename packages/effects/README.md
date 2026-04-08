@@ -402,7 +402,7 @@ Effects 目录下的包被应用层广泛使用:
 ```
 项目架构层次:
 ├── apps/                      # 应用层
-│   ├── web-antd/             # Ant Design Vue应用
+│   ├── web-antd/             # Antdv Next 应用
 │   ├── web-ele/              # Element Plus应用
 │   └── web-naive/            # Naive UI应用
 ├── packages/                 # 包层

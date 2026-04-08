@@ -237,7 +237,7 @@ import { VbenButton, VbenInput } from '@vben-core/shadcn-ui';
 @vben-core
     │
     ├──► apps/*                    # 应用层使用所有核心模块
-    │       ├── web-antd           # Ant Design Vue 应用
+    │       ├── web-antd           # Antdv Next 应用
     │       ├── web-ele            # Element Plus 应用
     │       └── web-naive          # Naive UI 应用
     │

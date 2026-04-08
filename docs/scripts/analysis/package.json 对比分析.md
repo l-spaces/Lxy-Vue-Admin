@@ -24,7 +24,7 @@ lastUpdated: true
 | **文件路径** | `/package.json` | `/apps/web-antd/package.json` |
 | **包名** | `vben-admin-monorepo` | `@vben/web-antd` |
 | **版本** | `5.7.0` | `1.0.0` |
-| **定位** | Monorepo 工作区根配置 | 具体应用（Ant Design Vue） |
+| **定位** | Monorepo 工作区根配置 | 具体应用（Antdv Next） |
 | **作用域** | 整个项目 | 单个应用 |
 
 ---

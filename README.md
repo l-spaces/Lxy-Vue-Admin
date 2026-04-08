@@ -2,9 +2,9 @@
 
 # Lxy-Vue-Admin
 
-**基于 Vben Admin 5 + Ant Design Vue Next 的企业级中后台管理系统**
+**基于 Vben Admin 5 + Antdv Next 的企业级中后台管理系统**
 
-[Vue 3.5+](https://vuejs.org/) · [Vite 5+](https://vitejs.dev/) · [TypeScript 5+](https://www.typescriptlang.org/) · [Pinia](https://pinia.vuejs.org/) · [Ant Design Vue Next](https://github.com/antdv-next/antdv-next)
+[Vue 3.5+](https://vuejs.org/) · [Vite 5+](https://vitejs.dev/) · [TypeScript 5+](https://www.typescriptlang.org/) · [Pinia](https://pinia.vuejs.org/) · [Antdv Next](https://antdv-next.com/)
 
 [![License](https://img.shields.io/github/license/vbenjs/vue-vben-admin)](https://github.com/vbenjs/vue-vben-admin/blob/main/LICENSE)
 [![Vue Version](https://img.shields.io/badge/Vue-3.5.13-brightgreen.svg)](https://vuejs.org/)
@@ -19,12 +19,12 @@
 
 ## 📖 项目简介
 
-Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，基于 **Vben Admin 5** 和 **Ant Design Vue Next** 构建，与 **Lxy-Spring** 后端框架深度集成。
+Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，基于 **Vben Admin 5** 和 **Antdv Next** 构建，与 **Lxy-Spring** 后端框架深度集成。
 
 ### ✨ 项目特性
 
 - 🚀 **现代化架构**：采用 Vue 3.5 + Vite 5 + TypeScript 5，性能卓越
-- 🎨 **精美 UI 设计**：基于 Ant Design Vue Next 4.2，提供优雅的视觉体验
+- 🎨 **精美 UI 设计**：基于 Antdv Next，提供优雅的视觉体验
 - 🔐 **完善的权限管理**：支持基于角色和权限码的双重验证机制
 - 🌍 **国际化支持**：内置多语言支持，轻松实现全球化部署
 - 📱 **响应式布局**：完美适配 PC、平板、手机等多种设备
@@ -50,7 +50,7 @@ Lxy-Vue-Admin 是一个现代化的企业级中后台管理系统前端项目，
 |------|------|------|
 | [Vue](https://vuejs.org/) | 3.5.13 | 渐进式 JavaScript 框架 |
 | [Vben Admin](https://github.com/vbenjs/vue-vben-admin) | 5.7.0 | 企业级中后台前端解决方案 |
-| [Ant Design Vue Next](https://github.com/antdv-next/antdv-next) | 4.2.6 | 基于 Vue 3 的企业级 UI 组件库 |
+| [Antdv Next](https://antdv-next.com/) | 1.1.8 | 基于 Vue 3 的企业级 UI 组件库 |
 | [Vue Router](https://router.vuejs.org/) | 4.x | Vue.js 官方路由管理器 |
 | [Pinia](https://pinia.vuejs.org/) | 2.x | Vue 3 推荐的状态管理库 |
 | [TypeScript](https://www.typescriptlang.org/) | 5.x | JavaScript 的超集 |
@@ -210,7 +210,7 @@ export default defineApplicationConfig({
 ```
 lxy-vue-admin/
 ├── apps/                      # 应用目录
-│   └── web-antd/             # Ant Design Vue 应用
+│   └── web-antd/             # Antdv Next 应用
 │       ├── src/              # 源代码目录
 │       ├── public/           # 公共资源
 │       ├── index.html        # HTML 模板
@@ -509,7 +509,7 @@ pnpm check:cspell  # 拼写检查
 
 - [Vue 3 文档](https://vuejs.org/)
 - [Vben Admin 文档](https://doc.vben.pro/)
-- [Ant Design Vue Next](https://github.com/antdv-next/antdv-next)
+- [Antdv Next](https://antdv-next.com/)
 - [TypeScript 文档](https://www.typescriptlang.org/)
 - [Vite 文档](https://vitejs.dev/)
 - [Pinia 文档](https://pinia.vuejs.org/)
