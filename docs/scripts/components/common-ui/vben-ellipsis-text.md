@@ -1,45 +1,63 @@
 ---
 title: 省略文本组件
-description: Vben EllipsisText 省略文本组件的使用方法和 API
+description: "@vben/common-ui EllipsisText 的截断、提示与展开机制"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben EllipsisText
+# `EllipsisText`
 
-`EllipsisText` 显示长文本，支持截断、工具提示和可选的展开/收起行为。
+## 简介
 
-## 基础用法
+`EllipsisText` 位于 `packages/effects/common-ui/src/components/ellipsis-text/ellipsis-text.vue`，用于长文本截断、tooltip 展示和点击展开。
 
-通过默认插槽传入文本，并使用 `maxWidth` 限制可视宽度。
+## 适用范围
 
-<DemoPreview dir="demos/vben-ellipsis-text/line" />
+- 表格列长文本展示
+- 卡片摘要文本展示
+- 仅在实际截断时显示 tooltip 的场景
 
-## 当前属性
+## 对应源码目录或关键文件
 
-| 属性 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `expand` | 允许点击展开行为 | `boolean` | `false` |
-| `line` | 最大可见行数 | `number` | `1` |
-| `maxWidth` | 文本区域的最大宽度 | `number \| string` | `'100%'` |
-| `placement` | 工具提示位置 | `'bottom' \| 'left' \| 'right' \| 'top'` | `'top'` |
-| `tooltip` | 启用工具提示 | `boolean` | `true` |
-| `tooltipWhenEllipsis` | 仅在文本实际被截断时显示工具提示 | `boolean` | `false` |
-| `ellipsisThreshold` | 检查截断时使用的像素阈值 | `number` | `3` |
-| `tooltipBackgroundColor` | 工具提示背景颜色 | `string` | `''` |
-| `tooltipColor` | 工具提示文本颜色 | `string` | `''` |
-| `tooltipFontSize` | 工具提示字体大小（像素） | `number` | `14` |
-| `tooltipMaxWidth` | 工具提示最大宽度（像素） | `number` | - |
-| `tooltipOverlayStyle` | 工具提示内容样式 | `CSSProperties` | `{ textAlign: 'justify' }` |
+- `packages/effects/common-ui/src/components/ellipsis-text/index.ts`
+- `packages/effects/common-ui/src/components/ellipsis-text/ellipsis-text.vue`
 
-## 事件
+## 核心机制或功能说明
 
-| 事件 | 描述 | 类型 |
-| --- | --- | --- |
-| `expandChange` | 展开状态变化时触发 | `(isExpand: boolean) => void` |
+### 导出方式
 
-## 插槽
+- `index.ts`：`export { default as EllipsisText }`
 
-| 插槽 | 描述 |
-| --------- | ---------------------- |
-| `tooltip` | 自定义工具提示内容 |
+### Props（源码定义）
+
+- 展示控制：
+  - `line`
+  - `maxWidth`
+  - `expand`
+- tooltip 控制：
+  - `tooltip`
+  - `tooltipWhenEllipsis`
+  - `placement`
+  - `tooltipBackgroundColor`
+  - `tooltipColor`
+  - `tooltipFontSize`
+  - `tooltipMaxWidth`
+  - `tooltipOverlayStyle`
+- 截断判断：
+  - `ellipsisThreshold`
+
+### 事件
+
+- `expandChange(isExpand: boolean)`
+
+### 实现机制
+
+- 使用 `ResizeObserver` 监听尺寸变化（`tooltipWhenEllipsis = true` 时启用）
+- 单行通过 `scrollWidth/clientWidth` 判断截断，多行通过 `scrollHeight/clientHeight` 判断
+- tooltip 组件使用 `VbenTooltip`
+
+## 使用方式、扩展方式或注意事项
+
+- `tooltipWhenEllipsis` 建议配合较小 `ellipsisThreshold`，避免误判。
+- 需要点击展开时开启 `expand`，并监听 `expandChange` 做状态联动。
+- 多行场景依赖 `-webkit-line-clamp`，在极端样式覆盖下需回归验证。

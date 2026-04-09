@@ -1,54 +1,68 @@
 ---
 title: 数字动画组件
-description: Vben CountToAnimator 数字动画组件的使用方法和 API
+description: "@vben/common-ui 的 CountTo 组件能力与属性说明"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben CountToAnimator
+# `CountTo`
 
-`CountToAnimator` 渲染数字过渡动画。
+## 简介
 
-## 基础用法
+`CountTo` 位于 `packages/effects/common-ui/src/components/count-to`，用于数值过渡动画展示；`@vben-core/shadcn-ui` 中另有 `VbenCountToAnimator`，两者都属于数字动效能力。
 
-使用 `start-val`、`end-val` 和 `duration` 控制动画范围和时长。
+## 适用范围
 
-<DemoPreview dir="demos/vben-count-to-animator/basic" />
+- 仪表盘统计数字动画
+- 需要前缀/后缀/小数格式化的数值展示
 
-## 格式化
+## 对应源码目录或关键文件
 
-使用 `prefix`、`suffix`、`separator` 和 `decimal` 控制数字的显示格式。
+- `packages/effects/common-ui/src/components/count-to/index.ts`
+- `packages/effects/common-ui/src/components/count-to/types.ts`
+- `packages/effects/common-ui/src/components/count-to/count-to.vue`
 
-<DemoPreview dir="demos/vben-count-to-animator/custom" />
+## 核心机制或功能说明
 
-## 属性
+### 导出方式
 
-| 属性 | 描述 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| `startVal` | 起始值 | `number` | `0` |
-| `endVal` | 结束值 | `number` | `2021` |
-| `duration` | 动画时长（毫秒） | `number` | `1500` |
-| `autoplay` | 自动开始 | `boolean` | `true` |
-| `prefix` | 值前缀 | `string` | `''` |
-| `suffix` | 值后缀 | `string` | `''` |
-| `separator` | 千位分隔符 | `string` | `','` |
-| `decimal` | 小数点分隔符 | `string` | `'.'` |
-| `color` | 文本颜色 | `string` | `''` |
-| `useEasing` | 启用过渡预设缓动 | `boolean` | `true` |
-| `transition` | 过渡预设名称 | `keyof typeof TransitionPresets` | `'linear'` |
-| `decimals` | 保留小数位数 | `number` | `0` |
+- `CountTo`（组件）
+- `types.ts` 中的 `CountToProps` 与 `TransitionPresets`
 
-## 事件
+### `CountToProps` 关键属性
 
-| 事件 | 描述 | 类型 |
-| ------------ | ------------------------------- | ------------ |
-| `started` | 动画开始时触发 | `() => void` |
-| `finished` | 动画结束时触发 | `() => void` |
-| `onStarted` | `started` 的已弃用别名 | `() => void` |
-| `onFinished` | `finished` 的已弃用别名 | `() => void` |
+- 值与动画：
+  - `startVal`
+  - `endVal`
+  - `duration`
+  - `delay`
+  - `disabled`
+  - `transition`
+- 数值格式：
+  - `decimals`
+  - `decimal`
+  - `separator`
+  - `prefix`
+  - `suffix`
+- 样式类与样式对象：
+  - `mainClass/decimalClass/prefixClass/suffixClass`
+  - `mainStyle/decimalStyle/prefixStyle/suffixStyle`
 
-## 暴露方法
+### 事件
 
-| 方法 | 描述 | 类型 |
-| ------- | --------------------------------- | ------------ |
-| `reset` | 重置为 `startVal` 并重新执行 | `() => void` |
+- `started`
+- `finished`
+
+这两个事件来自 `useTransition` 的生命周期回调。
+
+### 实现要点
+
+- 内部使用 `@vueuse/core` 的 `useTransition`
+- `endVal` 变化会触发重新动画
+- 组件把整数与小数部分拆开渲染，便于分别定制样式
+
+## 使用方式、扩展方式或注意事项
+
+- 当 `disabled = true` 时会跳过动画，适合首屏性能敏感场景。
+- 需要统一数字格式时建议通过 `separator/decimals` 配置，而不是在外层手工字符串拼接。
+- 业务若直接使用 `VbenCountToAnimator`，应同步核对其实现与 `CountTo` 的 API 差异。

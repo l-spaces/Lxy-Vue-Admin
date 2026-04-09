@@ -1,59 +1,69 @@
 ---
 title: Drawer 抽屉组件
-description: Vben Drawer 抽屉组件的使用方法和 API
+description: "@vben-core/popup-ui 的 useVbenDrawer、状态模型与接入约束"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben Drawer
+# `@vben-core/popup-ui` Drawer
 
-`Vben Drawer` 是框架使用的共享抽屉包装器。它支持自适应高度布局、加载状态、连接组件，以及与模态框 API 类似的命令式 API。
+## 简介
 
-## 基础用法
+Drawer 能力位于 `packages/@core/ui-kit/popup-ui/src/drawer`，与 Modal 结构一致，适合侧边编辑与详情场景。
 
-```ts
-const [Drawer, drawerApi] = useVbenDrawer({
-  // props
-  // events
-});
-```
+## 适用范围
 
-<DemoPreview dir="demos/vben-drawer/basic" />
+- 侧边抽屉编辑
+- 连接组件模式下的外层控制
+- 抽屉默认行为统一配置
 
-## 当前使用注意事项
+## 对应源码目录或关键文件
 
-- 如果使用 `connectedComponent`，内部和外部组件通过 `drawerApi.setData()` 和 `drawerApi.getData()` 共享数据。
-- 默认抽屉行为可以在 `apps/<app>/src/bootstrap.ts` 中通过 `setDefaultDrawerProps(...)` 进行调整。
-- `setState(...)` 操作的是 `DrawerState`，而不是 `ModalState`。
+- `packages/@core/ui-kit/popup-ui/src/drawer/index.ts`
+- `packages/@core/ui-kit/popup-ui/src/drawer/drawer.ts`
+- `packages/@core/ui-kit/popup-ui/src/drawer/drawer-api.ts`
+- `packages/@core/ui-kit/popup-ui/src/drawer/use-drawer.ts`
 
-## 关键属性
+## 核心机制或功能说明
 
-| 属性 | 描述 | 类型 |
-| --- | --- | --- |
-| `appendToMain` | 挂载到主内容区域而非 `body` | `boolean` |
-| `connectedComponent` | 将内部组件连接到抽屉包装器 | `Component` |
-| `closeIconPlacement` | 关闭图标的位置 | `'left' \| 'right'` |
-| `placement` | 抽屉所在侧边 | `'left' \| 'right' \| 'top' \| 'bottom'` |
-| `overlayBlur` | 遮罩层模糊程度 | `number` |
-| `submitting` | 提交时锁定抽屉交互 | `boolean` |
+### 导出方式
 
-## 事件
+`src/drawer/index.ts` 导出：
 
-| 事件 | 描述 | 类型 |
-| --- | --- | --- |
-| `onBeforeClose` | 关闭前调用；返回 `false` 或拒绝可阻止关闭 | `() => Promise<boolean \| undefined> \| boolean \| undefined` |
-| `onOpenChange` | 打开状态变化时调用 | `(isOpen: boolean) => void` |
-| `onOpened` | 打开动画完成后调用 | `() => void` |
-| `onClosed` | 关闭动画完成后调用 | `() => void` |
+- `VbenDrawer`
+- `useVbenDrawer`
+- `setDefaultDrawerProps`
+- 类型：`DrawerProps`、`DrawerState`、`DrawerApiOptions`、`ExtendedDrawerApi`
 
-## drawerApi
+### Drawer 状态模型
 
-| 方法 | 描述 |
-| --- | --- |
-| `setState(...)` | 更新抽屉状态 |
-| `open()` | 打开抽屉 |
-| `close()` | 关闭抽屉 |
-| `setData(data)` | 存储共享数据 |
-| `getData<T>()` | 读取共享数据 |
-| `lock(isLocked = true)` | 将抽屉锁定为提交状态 |
-| `unlock()` | `lock(false)` 的别名 |
+`DrawerProps` 关键属性包括：
+
+- 展示控制：`header`、`footer`、`title`
+- 位置控制：`placement`（`left/right/top/bottom`）
+- 交互控制：`closeOnClickModal`、`closeOnPressEscape`
+- 状态控制：`loading`、`confirmLoading`、`confirmDisabled`、`submitting`
+- 样式控制：`appendToMain`、`overlayBlur`、`closeIconPlacement`
+
+### `DrawerApi` 关键方法
+
+- `open()`
+- `close()`
+- `setState(...)`
+- `setData(payload)` / `getData<T>()`
+- `lock(isLocked?)` / `unlock()`
+- `drawerLoading(loading)`
+
+### connectedComponent 模式
+
+`useVbenDrawer({ connectedComponent })` 场景下：
+
+- 通过 `provide/inject` 连接 API
+- 支持外层拿到扩展 API 控制内层抽屉
+- 源码同样提示不建议混用大量 props 直传
+
+## 使用方式、扩展方式或注意事项
+
+- 抽屉提交态优先使用 `lock()`，关闭逻辑可结合 `onBeforeClose`。
+- 与 Modal 一样，临时业务数据建议走 `setData/getData`。
+- 若要全局调整抽屉行为，可在应用启动时调用 `setDefaultDrawerProps`（当前 `web-antd` 未启用该段配置）。

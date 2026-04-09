@@ -1,79 +1,74 @@
 ---
 title: Alert 警告组件
-description: Vben Alert 警告组件的使用方法和 API
+description: "@vben-core/popup-ui 的 alert/confirm/prompt 能力"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben Alert
+# `@vben-core/popup-ui` Alert
 
-`Alert` 提供轻量级的 JavaScript 驱动对话框，用于简单的 `alert`、`confirm` 和 `prompt` 风格交互。
+## 简介
 
-## 基础用法
+Alert 能力位于 `packages/@core/ui-kit/popup-ui/src/alert`，提供组件形式和命令式调用两种入口。
 
-使用 `alert` 显示单确认按钮对话框：
+## 适用范围
 
-<DemoPreview dir="demos/vben-alert/alert" />
+- 简单确认弹窗
+- 二次确认操作（`confirm`）
+- 轻量输入弹窗（`prompt`）
 
-使用 `confirm` 进行确认/取消交互：
+## 对应源码目录或关键文件
 
-<DemoPreview dir="demos/vben-alert/confirm" />
+- `packages/@core/ui-kit/popup-ui/src/alert/index.ts`
+- `packages/@core/ui-kit/popup-ui/src/alert/alert.ts`
+- `packages/@core/ui-kit/popup-ui/src/alert/AlertBuilder.ts`
 
-当需要简单的用户输入时使用 `prompt`：
+## 核心机制或功能说明
 
-<DemoPreview dir="demos/vben-alert/prompt" />
+### 导出方式
 
-## useAlertContext
+`src/alert/index.ts` 当前导出：
 
-如果 `content`、`footer` 或 `icon` 通过自定义组件渲染，您可以在该组件内部调用 `useAlertContext()` 来访问当前对话框的操作方法。
+- 组件：`Alert`
+- hook：`useAlertContext`
+- 命令式方法：
+  - `alert`
+  - `confirm`
+  - `prompt`
+  - `clearAllAlerts`
+- 类型：
+  - `AlertProps`
+  - `PromptProps`
+  - `IconType`
+  - `BeforeCloseScope`
 
-| 方法        | 描述               | 类型         |
-| ----------- | ------------------ | ------------ |
-| `doConfirm` | 触发确认操作       | `() => void` |
-| `doCancel`  | 触发取消操作       | `() => void` |
+### 核心 API
 
-## 核心类型
+`AlertProps` 重点属性：
 
-```ts
-export type IconType = 'error' | 'info' | 'question' | 'success' | 'warning';
+- `content`（必填）
+- `title`
+- `showCancel`
+- `confirmText` / `cancelText`
+- `beforeClose(scope)`（返回 `false` 可阻止关闭）
+- `overlayBlur`
 
-export type BeforeCloseScope = {
-  isConfirm: boolean;
-};
+`PromptProps<T>` 在 `AlertProps` 基础上补充：
 
-export type AlertProps = {
-  beforeClose?: (
-    scope: BeforeCloseScope,
-  ) => boolean | Promise<boolean | undefined> | undefined;
-  bordered?: boolean;
-  buttonAlign?: 'center' | 'end' | 'start';
-  cancelText?: string;
-  centered?: boolean;
-  confirmText?: string;
-  containerClass?: string;
-  content: Component | string;
-  contentClass?: string;
-  contentMasking?: boolean;
-  footer?: Component | string;
-  icon?: Component | IconType;
-  overlayBlur?: number;
-  showCancel?: boolean;
-  title?: string;
-};
+- `component`
+- `componentProps`
+- `componentSlots`
+- `defaultValue`
+- `modelPropName`
 
-export type PromptProps<T = any> = {
-  beforeClose?: (scope: {
-    isConfirm: boolean;
-    value: T | undefined;
-  }) => boolean | Promise<boolean | undefined> | undefined;
-  component?: Component;
-  componentProps?: Recordable<any>;
-  componentSlots?:
-    | (() => any)
-    | Recordable<unknown>
-    | VNode
-    | VNodeArrayChildren;
-  defaultValue?: T;
-  modelPropName?: string;
-} & Omit<AlertProps, 'beforeClose'>;
-```
+### 运行机制
+
+- `AlertBuilder.ts` 会创建独立容器并 `render` 到 `document.body`
+- `confirm` 是 `alert` 的封装（默认 `showCancel: true`）
+- `prompt` 在内部维护 `modelValue`，关闭前回调可拿到输入值
+
+## 使用方式、扩展方式或注意事项
+
+- 自定义内容组件里如需触发确认/取消，可使用 `useAlertContext()`。
+- `prompt` 返回 Promise；取消会 reject，调用处需处理异常分支。
+- 命令式弹窗较多时可用 `clearAllAlerts()` 做统一清理。

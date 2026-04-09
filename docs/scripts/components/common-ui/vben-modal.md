@@ -1,59 +1,75 @@
 ---
 title: Modal 模态框组件
-description: Vben Modal 模态框组件的使用方法和 API
+description: "@vben-core/popup-ui 的 useVbenModal、状态模型与连接组件机制"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben Modal
+# `@vben-core/popup-ui` Modal
 
-`Vben Modal` 是框架使用的共享模态框包装器。它支持拖拽行为、全屏模式、自适应高度处理、加载状态、连接组件和命令式 API。
+## 简介
 
-## 基础用法
+Modal 能力位于 `packages/@core/ui-kit/popup-ui/src/modal`，通过 `useVbenModal` 返回组件与 API，实现命令式控制。
 
-```ts
-const [Modal, modalApi] = useVbenModal({
-  // props
-  // events
-});
-```
+## 适用范围
 
-<DemoPreview dir="demos/vben-modal/basic" />
+- 页面弹窗编辑/详情
+- 外层容器 + 内层业务组件的“连接组件”模式
+- 统一设置默认弹窗行为
 
-## 当前使用注意事项
+## 对应源码目录或关键文件
 
-- 如果使用 `connectedComponent`，内部和外部组件通过 `modalApi.setData()` 和 `modalApi.getData()` 共享数据。
-- 当存在 `connectedComponent` 时，避免从连接侧传入额外的模态框属性。建议使用 `useVbenModal(...)` 或 `modalApi.setState(...)`。
-- 默认模态框行为可以在 `apps/<app>/src/bootstrap.ts` 中通过 `setDefaultModalProps(...)` 进行调整。
+- `packages/@core/ui-kit/popup-ui/src/modal/index.ts`
+- `packages/@core/ui-kit/popup-ui/src/modal/modal.ts`
+- `packages/@core/ui-kit/popup-ui/src/modal/modal-api.ts`
+- `packages/@core/ui-kit/popup-ui/src/modal/use-modal.ts`
+- `apps/web-antd/src/bootstrap.ts`
 
-## 关键属性
+## 核心机制或功能说明
 
-| 属性 | 描述 | 类型 |
-| --- | --- | --- |
-| `appendToMain` | 挂载到主内容区域而非 `body` | `boolean` |
-| `connectedComponent` | 将内部组件连接到模态框包装器 | `Component` |
-| `animationType` | 模态框进入/离开动画 | `'slide' \| 'scale'` |
-| `fullscreenButton` | 显示或隐藏全屏切换按钮 | `boolean` |
-| `overlayBlur` | 遮罩层模糊程度 | `number` |
-| `submitting` | 提交时锁定模态框交互 | `boolean` |
+### 导出方式
 
-## 事件
+`src/modal/index.ts` 导出：
 
-| 事件 | 描述 | 类型 |
-| --- | --- | --- |
-| `onBeforeClose` | 关闭前调用；返回 `false` 或拒绝可阻止关闭 | `() => Promise<boolean \| undefined> \| boolean \| undefined` |
-| `onOpenChange` | 打开状态变化时调用 | `(isOpen: boolean) => void` |
-| `onOpened` | 打开动画完成后调用 | `() => void` |
-| `onClosed` | 关闭动画完成后调用 | `() => void` |
+- `VbenModal`
+- `useVbenModal`
+- `setDefaultModalProps`
+- 类型：`ModalProps`、`ModalState`、`ModalApiOptions`、`ExtendedModalApi`
 
-## modalApi
+### Modal 状态模型
 
-| 方法 | 描述 |
-| --- | --- |
-| `setState(...)` | 更新模态框状态 |
-| `open()` | 打开模态框 |
-| `close()` | 关闭模态框 |
-| `setData(data)` | 存储共享数据 |
-| `getData<T>()` | 读取共享数据 |
-| `lock(isLocked = true)` | 将模态框锁定为提交状态 |
-| `unlock()` | `lock(false)` 的别名 |
+`ModalProps` 关键属性包括：
+
+- 展示控制：`header`、`footer`、`title`、`description`
+- 交互控制：`closeOnClickModal`、`closeOnPressEscape`、`fullscreenButton`
+- 状态控制：`loading`、`confirmLoading`、`confirmDisabled`、`submitting`
+- 布局控制：`appendToMain`、`centered`、`overlayBlur`、`animationType`
+
+### `ModalApi` 关键方法
+
+- `open()`
+- `close()`
+- `setState(...)`
+- `setData(payload)` / `getData<T>()`
+- `lock(isLocked?)` / `unlock()`
+- `modalLoading(loading)`
+
+### connectedComponent 模式
+
+`useVbenModal({ connectedComponent })` 时：
+
+- 外层通过 `provide/inject` 连接内层组件
+- 内层 API 会透传回外层
+- 源码会警告：`connectedComponent` 场景不建议再直接传 Modal props，以降低复杂度
+
+### 项目接入现状
+
+- `apps/web-antd/src/bootstrap.ts` 已设置默认 Modal 参数：
+  - `fullscreenButton: false`
+  - `animationType: 'scale'`
+
+## 使用方式、扩展方式或注意事项
+
+- 弹窗表单提交场景优先使用 `lock()`，避免用户重复操作。
+- 需要跨组件传递临时数据时使用 `setData/getData`，不要滥用全局 store。
+- 若修改默认弹窗行为，应在 `bootstrap.ts` 集中处理，避免页面级分散配置。

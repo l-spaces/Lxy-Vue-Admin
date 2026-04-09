@@ -1,90 +1,79 @@
 ---
 title: VxeTable 表格组件
-description: Vben VxeTable 高性能表格组件的使用方法和 API
+description: "@vben/plugins/vxe-table 与 web-antd 适配层说明"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben Vxe Table
+# `@vben/plugins/vxe-table`
 
-`Vben Vxe Table` 将 `vxe-table` 与 `Vben Form` 封装在一起，使您可以使用共享 API 构建可搜索的数据表格。
+## 简介
 
-## 适配器示例
+VXE 表格能力通过 `@vben/plugins/vxe-table` 提供，`web-antd` 在 `adapter/vxe-table.ts` 中完成全局配置和渲染器扩展。
 
-当前渲染器适配器使用 `renderTableDefault(...)` 进行表格单元格渲染：
+## 适用范围
 
-```ts
-vxeUI.renderer.add('CellImage', {
-  renderTableDefault(_renderOpts, params) {
-    const { column, row } = params;
-    return h(Image, { src: row[column.field] });
-  },
-});
+- 可搜索、可分页的中后台数据表格
+- 需要与 `VbenForm` 联动的查询区
+- 需要统一响应结构映射（`rows/total`）的接口列表页
 
-vxeUI.renderer.add('CellLink', {
-  renderTableDefault(renderOpts) {
-    const { props } = renderOpts;
-    return h(
-      Button,
-      { size: 'small', type: 'link' },
-      { default: () => props?.text },
-    );
-  },
-});
-```
+## 对应源码目录或关键文件
 
-## 基础用法
+- `packages/effects/plugins/src/vxe-table/index.ts`
+- `packages/effects/plugins/src/vxe-table/types.ts`
+- `packages/effects/plugins/src/vxe-table/use-vxe-grid.ts`
+- `apps/web-antd/src/adapter/vxe-table.ts`
 
-```vue
-<script setup lang="ts">
-import { useVbenVxeGrid } from '#/adapter/vxe-table';
+## 核心机制或功能说明
 
-const [Grid, gridApi] = useVbenVxeGrid({
-  gridOptions: {},
-  formOptions: {},
-  gridEvents: {},
-});
-</script>
+### 导出方式
 
-<template>
-  <Grid />
-</template>
-```
+`@vben/plugins/vxe-table` 当前导出：
 
-<DemoPreview dir="demos/vben-vxe-table/basic" />
+- `setupVbenVxeTable`
+- `useVbenVxeGrid`
+- `VbenVxeGrid`
+- 类型：
+  - `VxeTableGridColumns`
+  - `VxeTableGridOptions`
+  - `VxeGridDefines`
+  - `VxeGridListeners`
+  - `VxeGridProps`
+  - `VxeGridPropTypes`
 
-## GridApi
+### `useVbenVxeGrid` 返回值
 
-| 方法 | 描述 | 类型 |
-| --- | --- | --- |
-| `setLoading` | 更新加载状态 | `(loading: boolean) => void` |
-| `setGridOptions` | 合并新的表格选项 | `(options: Partial<VxeGridProps['gridOptions']>) => void` |
-| `reload` | 重新加载数据并重置分页 | `(params?: Record<string, any>) => void` |
-| `query` | 查询数据但保持当前页码 | `(params?: Record<string, any>) => void` |
-| `grid` | `vxe-grid` 实例 | `VxeGridInstance` |
-| `formApi` | 搜索表单 API | `FormApi` |
-| `toggleSearchForm` | 切换或强制设置搜索表单的显示状态 | `(show?: boolean) => boolean` |
+- `[Grid, gridApi]`
+- `gridApi` 通过 `ExtendedVxeGridApi` 提供状态读取与控制能力
 
-## 属性
+### `VxeGridProps` 关键字段
 
-| 属性 | 描述 | 类型 |
-| --- | --- | --- |
-| `tableTitle` | 表格标题 | `string` |
-| `tableTitleHelp` | 表格标题的帮助文本 | `string` |
-| `class` | 外部容器的类名 | `string` |
-| `gridClass` | `vxe-grid` 节点的类名 | `string` |
-| `gridOptions` | `vxe-grid` 选项 | `DeepPartial<VxeTableGridOptions>` |
-| `gridEvents` | `vxe-grid` 事件处理器 | `DeepPartial<VxeGridListeners>` |
-| `formOptions` | 搜索表单选项 | `VbenFormProps` |
-| `showSearchForm` | 搜索表单是否可见 | `boolean` |
-| `separator` | 搜索表单与表格主体之间的分隔符 | `boolean \| SeparatorOptions` |
+- `gridOptions`
+- `gridEvents`
+- `formOptions`
+- `showSearchForm`
+- `tableTitle`
+- `tableTitleHelp`
+- `separator`
 
-## 插槽
+### web-antd 适配层配置
 
-| 插槽 | 描述 |
-| ----------------- | ------------------------------------------------------- |
-| `toolbar-actions` | 工具栏左侧，靠近标题位置 |
-| `toolbar-tools` | 工具栏右侧，内置工具按钮之前 |
-| `table-title` | 自定义表格标题 |
+`apps/web-antd/src/adapter/vxe-table.ts` 已完成：
 
-所有以 `form-` 开头的具名插槽都会转发到搜索表单。
+- `setupVbenVxeTable({ configVxeTable, useVbenForm })`
+- 全局 `proxyConfig.response` 映射：
+  - `result: 'rows'`
+  - `total: 'total'`
+  - `list: 'rows'`
+- 自定义渲染器：
+  - `CellImage`
+  - `CellLink`
+- 工具函数：
+  - `vxeCheckboxChecked`
+  - `addSortParams`
+
+## 使用方式、扩展方式或注意事项
+
+- 列表接口建议返回 `rows + total`，可直接复用默认代理映射。
+- 自定义单元格优先通过 renderer 扩展，避免页面里重复渲染模板。
+- 排序参数联调建议复用 `addSortParams`，保持后端排序协议一致。

@@ -1,206 +1,83 @@
 ---
-title: Form 表单组件
-description: Vben Form 表单组件的使用方法和 API
+title: Form 表单能力
+description: "@vben-core/form-ui 与 web-antd 适配层的真实实现说明"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben Form
+# `@vben-core/form-ui`
 
-`Vben Form` 是跨不同 UI 库变体使用的共享表单抽象，如 `Ant Design Vue`、`Element Plus`、`Naive UI` 以及本仓库中添加的其他适配器。
+## 简介
 
-> 如果文档中的某些细节不够清晰，请同时查看在线演示。
+`Vben Form` 是 Schema 驱动表单能力，底层在 `@vben-core/form-ui`，`web-antd` 在适配层完成组件映射与校验规则本地化。
 
-## 适配器设置
+## 适用范围
 
-每个应用在 `src/adapter/form.ts` 和 `src/adapter/component/index.ts` 下维护自己的适配器层。
+- 新表单页面开发
+- 新增表单组件类型映射
+- 调整表单校验与模型绑定规则
 
-当前适配器模式为：
+## 对应源码目录或关键文件
 
-- 首先初始化共享组件适配器
-- 调用 `setupVbenForm(...)`
-- 通过 `modelPropNameMap` 映射特殊的 `v-model:*` 属性名称
-- 保持表单空状态与实际 UI 库行为一致
+- `packages/@core/ui-kit/form-ui/src/index.ts`
+- `packages/@core/ui-kit/form-ui/src/types.ts`
+- `apps/web-antd/src/adapter/form.ts`
+- `apps/web-antd/src/adapter/component/index.ts`
 
-### 表单适配器示例
+## 核心机制或功能说明
 
-```ts
-import type {
-  VbenFormSchema as FormSchema,
-  VbenFormProps,
-} from '@vben/common-ui';
+### 导出方式
 
-import type { ComponentType } from './component';
+`@vben-core/form-ui` 当前根导出：
 
-import { setupVbenForm, useVbenForm as useForm, z } from '@vben/common-ui';
-import { $t } from '@vben/locales';
+- `setupVbenForm`
+- `useVbenForm`（从 `use-vben-form` 导出）
+- `z`（`zod` 命名空间导出）
+- 类型：
+  - `VbenFormSchema`
+  - `VbenFormProps`
+  - `BaseFormComponentType`
+  - `ExtendedFormApi`
 
-import { initComponentAdapter } from './component';
+### 核心类型能力
 
-initComponentAdapter();
-setupVbenForm<ComponentType>({
-  config: {
-    baseModelPropName: 'value',
-    emptyStateValue: null,
-    modelPropNameMap: {
-      Checkbox: 'checked',
-      Radio: 'checked',
-      Switch: 'checked',
-      Upload: 'fileList',
-    },
-  },
-  defineRules: {
-    required: (value, _params, ctx) => {
-      if (value === undefined || value === null || value.length === 0) {
-        return $t('ui.formRules.required', [ctx.label]);
-      }
-      return true;
-    },
-    selectRequired: (value, _params, ctx) => {
-      if (value === undefined || value === null) {
-        return $t('ui.formRules.selectRequired', [ctx.label]);
-      }
-      return true;
-    },
-  },
-});
+`types.ts` 中核心模型：
 
-const useVbenForm = useForm<ComponentType>;
+- `FormSchema`：字段定义（`component`、`fieldName`、`rules`、`dependencies` 等）
+- `VbenFormProps`：表单级属性（`schema`、`showDefaultActions`、`handleSubmit`、`handleValuesChange` 等）
+- `FormItemDependencies`：字段联动（`if/show/required/rules/trigger`）
 
-export { useVbenForm, z };
-export type VbenFormSchema = FormSchema<ComponentType>;
-export type { VbenFormProps };
-```
+### web-antd 适配配置
 
-### 组件适配器示例
+`apps/web-antd/src/adapter/form.ts`：
 
-```ts
-import type { Component, SetupContext } from 'vue';
+- `baseModelPropName = 'value'`
+- `modelPropNameMap`：
+  - `Checkbox -> checked`
+  - `Radio -> checked`
+  - `Switch -> checked`
+  - `Upload -> fileList`
+  - `RichTextarea -> modelValue`
+- 自定义规则：
+  - `required`
+  - `selectRequired`
 
-import type { BaseFormComponentType } from '@vben/common-ui';
+`apps/web-antd/src/adapter/component/index.ts` 会注册实际组件映射，例如：
 
-import { h } from 'vue';
+- `Input`、`Textarea`、`InputPassword`
+- `Select`、`Cascader`、`TreeSelect`
+- `ApiSelect`、`ApiCascader`、`ApiTreeSelect`
+- `ImageUpload`、`FileUpload`、`RichTextarea`
+- `DefaultButton`、`PrimaryButton`
 
-import { globalShareState } from '@vben/common-ui';
-import { $t } from '@vben/locales';
-import {
-  AutoComplete,
-  Button,
-  Checkbox,
-  CheckboxGroup,
-  DatePicker,
-  Divider,
-  Input,
-  InputNumber,
-  InputPassword,
-  Mentions,
-  notification,
-  Radio,
-  RadioGroup,
-  RangePicker,
-  Rate,
-  Select,
-  Space,
-  Switch,
-  Textarea,
-  TimePicker,
-  TreeSelect,
-  Upload,
-} from 'ant-design-vue';
+### 依赖与适配关系
 
-const withDefaultPlaceholder = <T extends Component>(
-  component: T,
-  type: 'input' | 'select',
-) => {
-  return (props: any, { attrs, slots }: Omit<SetupContext, 'expose'>) => {
-    const placeholder = props?.placeholder || $t(`ui.placeholder.${type}`);
-    return h(component, { ...props, ...attrs, placeholder }, slots);
-  };
-};
+- 表单引擎依赖 `vee-validate + zod`
+- 具体 UI 组件由应用适配层注入到 `globalShareState`
+- `web-antd` 中表单页面通常通过 `#/adapter/form` 暴露的 `useVbenForm` 使用
 
-export type ComponentType =
-  | 'AutoComplete'
-  | 'Checkbox'
-  | 'CheckboxGroup'
-  | 'DatePicker'
-  | 'DefaultButton'
-  | 'Divider'
-  | 'Input'
-  | 'InputNumber'
-  | 'InputPassword'
-  | 'Mentions'
-  | 'PrimaryButton'
-  | 'Radio'
-  | 'RadioGroup'
-  | 'RangePicker'
-  | 'Rate'
-  | 'Select'
-  | 'Space'
-  | 'Switch'
-  | 'Textarea'
-  | 'TimePicker'
-  | 'TreeSelect'
-  | 'Upload'
-  | BaseFormComponentType;
+## 使用方式、扩展方式或注意事项
 
-async function initComponentAdapter() {
-  const components: Partial<Record<ComponentType, Component>> = {
-    AutoComplete,
-    Checkbox,
-    CheckboxGroup,
-    DatePicker,
-    DefaultButton: (props, { attrs, slots }) => {
-      return h(Button, { ...props, attrs, type: 'default' }, slots);
-    },
-    Divider,
-    Input: withDefaultPlaceholder(Input, 'input'),
-    InputNumber: withDefaultPlaceholder(InputNumber, 'input'),
-    InputPassword: withDefaultPlaceholder(InputPassword, 'input'),
-    Mentions: withDefaultPlaceholder(Mentions, 'input'),
-    PrimaryButton: (props, { attrs, slots }) => {
-      return h(Button, { ...props, attrs, type: 'primary' }, slots);
-    },
-    Radio,
-    RadioGroup,
-    RangePicker,
-    Rate,
-    Select: withDefaultPlaceholder(Select, 'select'),
-    Space,
-    Switch,
-    Textarea: withDefaultPlaceholder(Textarea, 'input'),
-    TimePicker,
-    TreeSelect: withDefaultPlaceholder(TreeSelect, 'select'),
-    Upload,
-  };
-
-  globalShareState.setComponents(components);
-  globalShareState.defineMessage({
-    copyPreferencesSuccess: (title, content) => {
-      notification.success({
-        description: content,
-        message: title,
-        placement: 'bottomRight',
-      });
-    },
-  });
-}
-
-export { initComponentAdapter };
-```
-
-## 基础用法
-
-通过 `useVbenForm` 创建表单：
-
-<DemoPreview dir="demos/vben-form/basic" />
-
-## 关键 API 说明
-
-- `useVbenForm` 返回 `[Form, formApi]`
-- `formApi.getFieldComponentRef()` 和 `formApi.getFocusedField()` 在当前版本中可用
-- `handleValuesChange(values, fieldsChanged)` 在较新版本中包含第二个参数
-- `fieldMappingTime` 和 `scrollToFirstError` 是当前表单属性的一部分
-
-## 参考
-
-如需完整的中文 API 表格和更多示例，请参阅中文组件页面以获取完整的参数矩阵。
+- 新增组件类型时，先改 `ComponentType` 联合类型，再补 `initComponentAdapter()` 映射。
+- 需要字段联动时，优先使用 `dependencies`，避免在页面里写分散逻辑。
+- 若校验提示要国际化，统一在适配层规则中处理，避免页面重复定义。

@@ -1,72 +1,80 @@
 ---
 title: API 组件
-description: Vben ApiComponent 组件的使用方法和 API
+description: "@vben/common-ui 中 ApiComponent 的数据驱动封装能力"
 outline: deep
 lastUpdated: true
 ---
 
-# Vben ApiComponent
+# `ApiComponent`
 
-`ApiComponent` 是一个包装器，用于为现有组件附加远程选项加载行为，同时保留原始组件的使用模式。
+## 简介
 
-## 常规用法
+`ApiComponent` 位于 `packages/effects/common-ui/src/components/api-component/api-component.vue`，用于给任意选择类组件附加“远程 options 加载”能力。
 
-当前包装流程为：
+## 适用范围
 
-- 通过 `component` 传入目标组件
-- 通过 `api` 获取远程数据
-- 通过 `beforeFetch` 和 `afterFetch` 转换数据
-- 通过 `resultField`、`valueField`、`labelField` 和 `childrenField` 映射远程字段
-- 通过 `optionsPropName` 将标准化后的选项传递给目标组件
+- 远程下拉、级联、树选择等场景
+- 统一 options 结构转换
+- 表单适配器中的 `ApiSelect/ApiCascader/ApiTreeSelect`
 
-```vue
-<script lang="ts" setup>
-import { ApiComponent } from '@vben/common-ui';
+## 对应源码目录或关键文件
 
-import { Cascader } from 'ant-design-vue';
+- `packages/effects/common-ui/src/components/api-component/index.ts`
+- `packages/effects/common-ui/src/components/api-component/api-component.vue`
+- `apps/web-antd/src/adapter/component/index.ts`
 
-function fetchApi() {
-  return Promise.resolve([
-    {
-      label: 'Zhejiang',
-      value: 'zhejiang',
-      children: [{ label: 'Hangzhou', value: 'hangzhou' }],
-    },
-  ]);
-}
-</script>
+## 核心机制或功能说明
 
-<template>
-  <ApiComponent
-    :api="fetchApi"
-    :component="Cascader"
-    :immediate="false"
-    children-field="children"
-    loading-slot="suffixIcon"
-    visible-event="onDropdownVisibleChange"
-  />
-</template>
-```
+### 导出方式
 
-## 当前属性
+- `index.ts`：`export { default as ApiComponent }`
 
-| 属性 | 描述 | 类型 |
-| --- | --- | --- |
-| `component` | 被包装的目标组件 | `Component` |
-| `api` | 远程请求函数 | `(arg?: any) => Promise<any>` |
-| `params` | 额外的请求参数 | `Record<string, any>` |
-| `beforeFetch` | 请求前的钩子 | `AnyPromiseFunction` |
-| `afterFetch` | 请求后的钩子 | `AnyPromiseFunction` |
-| `visibleEvent` | 用于懒加载数据的事件名称 | `string` |
-| `loadingSlot` | 用于渲染加载图标的插槽名称 | `string` |
-| `modelPropName` | 被包装组件的模型属性名 | `string` |
-| `autoSelect` | 自动选择第一个/最后一个/唯一选项，或使用自定义函数 | `'first' \| 'last' \| 'one' \| ((items) => item) \| false` |
+### 核心 Props（源码定义）
 
-## 暴露方法
+- `component`：目标组件（必填）
+- `api`：远程请求函数
+- `params`：请求参数
+- `resultField`：响应结果字段提取
+- `labelField/valueField/childrenField/disabledField`
+- `optionsPropName`：目标组件接收 options 的属性名
+- `immediate`：是否立即请求
+- `alwaysLoad`：是否每次展开都重新加载
+- `visibleEvent`：触发懒加载的事件名
+- `beforeFetch/shouldFetch/afterFetch`
+- `modelPropName`
+- `autoSelect`：`first/last/one/function/false`
 
-| 方法 | 描述 |
-| --- | --- |
-| `getComponentRef()` | 返回被包装组件的实例 |
-| `updateParam(newParams)` | 合并并更新请求参数 |
-| `getOptions()` | 返回已加载的选项 |
-| `getValue()` | 返回当前绑定的值 |
+### Emits 与 Expose
+
+组件会抛出：
+
+- `optionsChange(options)`
+
+组件会暴露：
+
+- `getOptions()`
+- `getValue()`
+- `getComponentRef()`
+- `updateParam(newParams)`
+
+### 运行机制
+
+- 内部统一把远程数据映射成 `{ label, value, disabled, children }`
+- 支持 `numberToString` 转换 value 类型
+- 对并发请求有待处理标记，避免重复加载导致状态错乱
+
+### 在 web-antd 的接入
+
+`apps/web-antd/src/adapter/component/index.ts` 已把它封装为：
+
+- `ApiSelect`
+- `ApiCascader`
+- `ApiTreeSelect`
+
+并统一注入默认 placeholder 与字段映射。
+
+## 使用方式、扩展方式或注意事项
+
+- 首次加载与展开加载策略取决于 `immediate + visibleEvent + alwaysLoad` 组合。
+- 如果后端字段名不一致，优先使用 `labelField/valueField/...` 映射，不要在页面里二次转换。
+- `autoSelect` 只在当前值为空时触发，避免覆盖用户已选值。
