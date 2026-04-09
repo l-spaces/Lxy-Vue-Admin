@@ -1,3 +1,4 @@
+<!--数字动画-->
 <script lang="ts" setup>
 import { computed, onMounted, ref, unref, watch, watchEffect } from 'vue';
 

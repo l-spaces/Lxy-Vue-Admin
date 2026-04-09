@@ -1,3 +1,4 @@
+<!--点选卡片-->
 <script setup lang="ts">
 import type { PointSelectionCaptchaCardProps } from '../types';
 

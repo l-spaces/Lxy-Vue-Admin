@@ -1,3 +1,4 @@
+<!--页脚设置-->
 <script setup lang="ts">
 import { $t } from '@vben/locales';
 

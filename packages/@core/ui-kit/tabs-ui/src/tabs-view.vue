@@ -1,3 +1,4 @@
+<!--标签视图-->
 <script setup lang="ts">
 import type { TabsEmits, TabsProps } from './types';
 

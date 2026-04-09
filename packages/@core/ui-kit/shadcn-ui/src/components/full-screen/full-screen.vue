@@ -1,3 +1,4 @@
+<!--全屏按钮-->
 <script lang="ts" setup>
 import { Maximize, Minimize } from '@vben-core/icons';
 

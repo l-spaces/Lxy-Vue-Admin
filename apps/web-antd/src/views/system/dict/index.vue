@@ -1,3 +1,4 @@
+<!--字典管理-->
 <script setup lang="ts">
 import { onUnmounted } from 'vue';
 

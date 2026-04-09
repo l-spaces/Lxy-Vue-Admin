@@ -1,3 +1,4 @@
+<!--注册页-->
 <script setup lang="ts">
 import type { Recordable } from '@vben/types';
 

@@ -1,3 +1,4 @@
+<!--分段控件-->
 <script setup lang="ts">
 import type { SegmentedItem } from './types';
 

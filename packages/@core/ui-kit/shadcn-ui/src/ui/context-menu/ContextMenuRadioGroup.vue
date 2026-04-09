@@ -1,3 +1,4 @@
+<!--单选组-->
 <script setup lang="ts">
 import type {
   ContextMenuRadioGroupEmits,

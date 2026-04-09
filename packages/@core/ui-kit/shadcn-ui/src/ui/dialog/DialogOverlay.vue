@@ -1,3 +1,4 @@
+<!--对话遮罩-->
 <script setup lang="ts">
 import { inject } from 'vue';
 

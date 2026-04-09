@@ -1,3 +1,4 @@
+<!--安全项-->
 <script setup lang="ts">
 import type { UpdatePasswordParam } from '#/api/system/profile/model';
 

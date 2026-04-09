@@ -1,3 +1,4 @@
+<!--内容区域-->
 <script lang="ts" setup>
 import type { RouteLocationNormalizedLoadedGeneric } from 'vue-router';
 

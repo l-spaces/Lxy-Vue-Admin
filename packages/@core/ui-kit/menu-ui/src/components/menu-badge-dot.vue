@@ -1,3 +1,4 @@
+<!--菜单圆点-->
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
 

@@ -1,3 +1,4 @@
+<!--语言切换-->
 <script setup lang="ts">
 import type { SupportedLanguagesType } from '@vben/locales';
 

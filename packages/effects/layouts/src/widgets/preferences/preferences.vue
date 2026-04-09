@@ -1,3 +1,4 @@
+<!--偏好设置-->
 <script lang="ts" setup>
 import { Settings } from '@vben/icons';
 import { $t, loadLocaleMessages } from '@vben/locales';

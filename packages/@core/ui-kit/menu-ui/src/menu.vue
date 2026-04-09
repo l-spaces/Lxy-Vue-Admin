@@ -1,3 +1,4 @@
+<!--菜单组件-->
 <script setup lang="ts">
 import type { MenuRecordRaw } from '@vben-core/typings';
 

@@ -1,3 +1,4 @@
+<!--通知面板-->
 <script lang="ts" setup>
 import type { NotificationItem } from './types';
 

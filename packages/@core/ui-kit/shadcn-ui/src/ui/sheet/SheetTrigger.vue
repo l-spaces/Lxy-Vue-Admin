@@ -1,3 +1,4 @@
+<!--面板触发-->
 <script setup lang="ts">
 import type { DialogTriggerProps } from 'reka-ui';
 

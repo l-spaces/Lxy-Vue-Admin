@@ -1,3 +1,4 @@
+<!--侧栏固定-->
 <script setup lang="ts">
 import { Pin, PinOff } from '@vben-core/icons';
 

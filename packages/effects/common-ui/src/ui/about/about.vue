@@ -1,3 +1,4 @@
+<!--关于页-->
 <script setup lang="ts">
 import type { AboutProps, DescriptionItem } from './about';
 

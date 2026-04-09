@@ -1,3 +1,4 @@
+<!--缓存页面-->
 <!-- 本组件用于获取缓存的route并保存到pinia -->
 <script setup lang="ts">
 import type { VNode } from 'vue';

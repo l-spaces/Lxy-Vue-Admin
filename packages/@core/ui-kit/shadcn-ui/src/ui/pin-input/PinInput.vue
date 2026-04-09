@@ -1,3 +1,4 @@
+<!--PIN输入-->
 <script setup lang="ts">
 import type { PinInputRootEmits, PinInputRootProps } from 'reka-ui';
 

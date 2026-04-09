@@ -1,3 +1,4 @@
+<!--命令图表-->
 <script setup lang="ts">
 import type { EchartsUIType } from '@vben/plugins/echarts';
 

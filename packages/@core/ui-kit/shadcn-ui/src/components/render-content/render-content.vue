@@ -1,3 +1,4 @@
+<!--渲染容器-->
 <script lang="ts">
 import type { Component, PropType } from 'vue';
 

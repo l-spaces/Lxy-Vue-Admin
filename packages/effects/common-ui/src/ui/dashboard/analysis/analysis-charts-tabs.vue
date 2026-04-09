@@ -1,3 +1,4 @@
+<!--图表标签-->
 <script setup lang="ts">
 import type { TabOption } from '@vben/types';
 

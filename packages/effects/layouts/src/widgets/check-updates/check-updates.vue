@@ -1,3 +1,4 @@
+<!--检查更新-->
 <script setup lang="ts">
 import { $t } from '@vben/locales';
 import { useVbenModal } from '@vben-core/popup-ui';

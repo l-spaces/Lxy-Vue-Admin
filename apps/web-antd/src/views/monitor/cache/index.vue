@@ -1,3 +1,4 @@
+<!--缓存监控-->
 <script setup lang="ts">
 import type { RedisInfo } from '#/api/monitor/cache';
 

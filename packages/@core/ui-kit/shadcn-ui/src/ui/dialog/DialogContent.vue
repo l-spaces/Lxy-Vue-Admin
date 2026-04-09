@@ -1,3 +1,4 @@
+<!--对话内容-->
 <script setup lang="ts">
 import type { DialogContentEmits, DialogContentProps } from 'reka-ui';
 

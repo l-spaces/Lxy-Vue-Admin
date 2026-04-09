@@ -1,3 +1,4 @@
+<!--圆角设置-->
 <script setup lang="ts">
 import { ToggleGroup, ToggleGroupItem } from '@vben-core/shadcn-ui';
 

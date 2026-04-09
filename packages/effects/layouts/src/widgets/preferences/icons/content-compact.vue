@@ -1,3 +1,4 @@
+<!--紧凑内容图-->
 <template>
   <svg
     class="custom-radio-image"

@@ -1,3 +1,4 @@
+<!--过期弹窗-->
 <script setup lang="ts">
 import type { AuthenticationProps } from './types';
 

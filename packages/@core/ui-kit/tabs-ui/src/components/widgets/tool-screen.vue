@@ -1,3 +1,4 @@
+<!--全屏工具-->
 <script lang="ts" setup>
 import { Fullscreen, Minimize2 } from '@vben-core/icons';
 

@@ -1,3 +1,4 @@
+<!--图标按钮-->
 <script setup lang="ts">
 import type { ButtonVariants } from '../../ui';
 import type { VbenButtonProps } from './button';

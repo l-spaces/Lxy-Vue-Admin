@@ -1,3 +1,4 @@
+<!--授权登录-->
 <script setup lang="ts">
 import { $t } from '@vben/locales';
 

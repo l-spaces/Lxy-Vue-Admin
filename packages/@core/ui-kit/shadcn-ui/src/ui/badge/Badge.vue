@@ -1,3 +1,4 @@
+<!--徽标组件-->
 <script setup lang="ts">
 import type { BadgeVariants } from './badge';
 

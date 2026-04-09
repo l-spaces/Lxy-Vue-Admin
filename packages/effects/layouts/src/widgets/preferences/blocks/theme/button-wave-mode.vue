@@ -1,3 +1,4 @@
+<!--波纹设置-->
 <script setup lang="ts">
 import type { ThemePreferences } from '@vben/preferences';
 

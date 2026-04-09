@@ -1,3 +1,4 @@
+<!--复选菜单-->
 <script setup lang="ts">
 import type {
   ContextMenuCheckboxItemEmits,

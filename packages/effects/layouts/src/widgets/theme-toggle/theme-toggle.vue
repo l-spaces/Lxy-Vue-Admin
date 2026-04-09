@@ -1,3 +1,4 @@
+<!--主题切换-->
 <script lang="ts" setup>
 import type { ThemeModeType } from '@vben/types';
 

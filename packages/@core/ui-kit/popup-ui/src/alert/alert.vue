@@ -1,3 +1,4 @@
+<!--提醒弹窗-->
 <script lang="ts" setup>
 import type { Component } from 'vue';
 

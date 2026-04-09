@@ -1,3 +1,4 @@
+<!--全局快捷键-->
 <script setup lang="ts">
 import { computed } from 'vue';
 

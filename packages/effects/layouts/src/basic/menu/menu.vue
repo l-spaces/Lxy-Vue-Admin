@@ -1,3 +1,4 @@
+<!--主导航-->
 <script lang="ts" setup>
 import type { MenuRecordRaw } from '@vben/types';
 

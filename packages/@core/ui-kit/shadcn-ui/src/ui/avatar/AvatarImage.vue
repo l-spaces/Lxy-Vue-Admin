@@ -1,3 +1,4 @@
+<!--头像图片-->
 <script setup lang="ts">
 import type { AvatarImageProps } from 'reka-ui';
 

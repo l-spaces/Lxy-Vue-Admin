@@ -1,3 +1,4 @@
+<!--滑块验证-->
 <script setup lang="ts">
 import type {
   CaptchaVerifyPassingData,

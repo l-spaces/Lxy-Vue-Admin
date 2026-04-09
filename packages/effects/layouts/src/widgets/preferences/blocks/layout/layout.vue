@@ -1,3 +1,4 @@
+<!--布局设置-->
 <script setup lang="ts">
 import type { LayoutType } from '@vben/types';
 import type { Component } from 'vue';

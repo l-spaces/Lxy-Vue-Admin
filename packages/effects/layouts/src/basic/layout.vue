@@ -1,3 +1,4 @@
+<!--基础布局-->
 <script lang="ts" setup>
 import type { SetupContext } from 'vue';
 import type { RouteLocationNormalizedLoaded } from 'vue-router';

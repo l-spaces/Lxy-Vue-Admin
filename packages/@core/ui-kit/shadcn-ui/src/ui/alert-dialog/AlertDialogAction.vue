@@ -1,3 +1,4 @@
+<!--确认按钮-->
 <script setup lang="ts">
 import type { AlertDialogActionProps } from 'reka-ui';
 

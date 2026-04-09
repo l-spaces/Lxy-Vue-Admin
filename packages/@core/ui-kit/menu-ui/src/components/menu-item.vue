@@ -1,3 +1,4 @@
+<!--菜单项-->
 <script lang="ts" setup>
 import type { MenuItemProps, MenuItemRegistered } from '../types';
 

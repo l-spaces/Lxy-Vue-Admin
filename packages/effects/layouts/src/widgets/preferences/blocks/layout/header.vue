@@ -1,3 +1,4 @@
+<!--头部设置-->
 <script setup lang="ts">
 import type {
   LayoutHeaderMenuAlignType,

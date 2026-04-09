@@ -1,3 +1,4 @@
+<!--通用设置-->
 <script setup lang="ts">
 import { SUPPORT_LANGUAGES } from '@vben/constants';
 import { $t } from '@vben/locales';

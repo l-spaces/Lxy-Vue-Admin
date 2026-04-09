@@ -1,3 +1,4 @@
+<!--警告弹窗-->
 <script setup lang="ts">
 import type { AlertDialogEmits, AlertDialogProps } from 'reka-ui';
 

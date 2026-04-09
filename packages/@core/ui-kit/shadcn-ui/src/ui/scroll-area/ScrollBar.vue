@@ -1,3 +1,4 @@
+<!--滚动条-->
 <script setup lang="ts">
 import type { ScrollAreaScrollbarProps } from 'reka-ui';
 

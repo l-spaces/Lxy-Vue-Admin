@@ -1,3 +1,4 @@
+<!--头像组件-->
 <script setup lang="ts">
 import type {
   AvatarFallbackProps,

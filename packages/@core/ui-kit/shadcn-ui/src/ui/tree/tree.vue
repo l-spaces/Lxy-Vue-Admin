@@ -1,3 +1,4 @@
+<!--树组件-->
 <script lang="ts" setup>
 import type { Arrayable } from '@vueuse/core';
 import type { FlattenedItem } from 'reka-ui';

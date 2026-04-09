@@ -1,3 +1,4 @@
+<!--加载图标-->
 <script lang="ts" setup>
 import { VbenSpinner } from '@vben-core/shadcn-ui';
 import { cn } from '@vben-core/shared/utils';

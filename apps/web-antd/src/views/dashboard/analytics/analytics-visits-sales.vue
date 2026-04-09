@@ -1,3 +1,4 @@
+<!--销售排行-->
 <script lang="ts" setup>
 import type { EchartsUIType } from '@vben/plugins/echarts';
 

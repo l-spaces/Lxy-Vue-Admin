@@ -1,3 +1,4 @@
+<!--颜色模式-->
 <script setup lang="ts">
 import { $t } from '@vben/locales';
 

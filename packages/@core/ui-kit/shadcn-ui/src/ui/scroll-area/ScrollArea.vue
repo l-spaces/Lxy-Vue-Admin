@@ -1,3 +1,4 @@
+<!--滚动区-->
 <script setup lang="ts">
 import type { ScrollAreaRootProps } from 'reka-ui';
 

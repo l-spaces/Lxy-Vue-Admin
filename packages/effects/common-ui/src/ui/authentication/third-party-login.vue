@@ -1,3 +1,4 @@
+<!--三方登录-->
 <script setup lang="ts">
 import { GiteeIcon, MdiGithub, MdiQqchat, MdiWechat } from '@vben/icons';
 import { $t } from '@vben/locales';

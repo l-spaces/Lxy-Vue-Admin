@@ -1,3 +1,4 @@
+<!--选择按钮组-->
 <script lang="ts" setup>
 import type { Arrayable } from '@vueuse/core';
 

@@ -1,3 +1,4 @@
+<!--生成配置-->
 <script setup lang="ts">
 import type { Ref } from 'vue';
 

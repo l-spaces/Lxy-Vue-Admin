@@ -1,3 +1,4 @@
+<!--偏好按钮-->
 <script lang="ts" setup>
 import { Settings } from '@vben/icons';
 import { VbenIconButton } from '@vben-core/shadcn-ui';

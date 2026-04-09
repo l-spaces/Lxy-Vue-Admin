@@ -1,3 +1,4 @@
+<!--基础设置-->
 <script setup lang="ts">
 import type { BasicOption } from '@vben/types';
 

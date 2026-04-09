@@ -1,3 +1,4 @@
+<!--字号设置-->
 <script setup lang="ts">
 import { watch } from 'vue';
 

@@ -1,3 +1,4 @@
+<!--选择触发-->
 <script setup lang="ts">
 import type { SelectTriggerProps } from 'reka-ui';
 

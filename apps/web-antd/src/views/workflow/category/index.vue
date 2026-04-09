@@ -1,3 +1,4 @@
+<!--分类管理-->
 <script setup lang="ts">
 import type { VbenFormProps } from '@vben/common-ui';
 import type { Recordable } from '@vben/types';

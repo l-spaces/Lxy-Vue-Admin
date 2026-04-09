@@ -1,3 +1,4 @@
+<!--弹窗遮罩-->
 <script setup lang="ts">
 import { useScrollLock } from '@vben-core/composables';
 

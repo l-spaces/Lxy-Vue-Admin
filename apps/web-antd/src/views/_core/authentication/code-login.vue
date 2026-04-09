@@ -1,3 +1,4 @@
+<!--验证码登录-->
 <script lang="ts" setup>
 import type { LoginCodeParams, VbenFormSchema } from '@vben/common-ui';
 

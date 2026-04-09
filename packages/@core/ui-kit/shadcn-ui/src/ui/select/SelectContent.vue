@@ -1,3 +1,4 @@
+<!--选项面板-->
 <script setup lang="ts">
 import type { SelectContentEmits, SelectContentProps } from 'reka-ui';
 

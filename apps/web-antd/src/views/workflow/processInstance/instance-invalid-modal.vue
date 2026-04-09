@@ -1,3 +1,4 @@
+<!--作废弹窗-->
 <script setup lang="ts">
 import { useVbenModal } from '@vben/common-ui';
 

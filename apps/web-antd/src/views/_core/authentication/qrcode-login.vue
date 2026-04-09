@@ -1,3 +1,4 @@
+<!--扫码登录-->
 <script lang="ts" setup>
 import { AuthenticationQrCodeLogin } from '@vben/common-ui';
 import { LOGIN_PATH } from '@vben/constants';

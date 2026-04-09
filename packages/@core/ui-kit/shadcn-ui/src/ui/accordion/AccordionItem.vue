@@ -1,3 +1,4 @@
+<!--折叠项-->
 <script setup lang="ts">
 import type { AccordionItemProps } from 'reka-ui';
 

@@ -1,3 +1,4 @@
+<!--弹窗说明-->
 <script lang="ts" setup>
 import type { AlertDialogDescriptionProps } from 'reka-ui';
 

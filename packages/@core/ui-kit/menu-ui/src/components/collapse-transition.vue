@@ -1,3 +1,4 @@
+<!--折叠过渡-->
 <script lang="ts" setup>
 import type { RendererElement } from 'vue';
 

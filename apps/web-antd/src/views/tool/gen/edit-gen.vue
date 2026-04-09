@@ -1,3 +1,4 @@
+<!--生成编辑-->
 <script setup lang="ts">
 import type { GenInfo } from '#/api/tool/gen/model';
 

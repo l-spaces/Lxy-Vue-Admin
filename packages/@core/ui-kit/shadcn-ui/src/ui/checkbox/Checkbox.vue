@@ -1,3 +1,4 @@
+<!--复选框-->
 <script setup lang="ts">
 import type { CheckboxRootEmits, CheckboxRootProps } from 'reka-ui';
 

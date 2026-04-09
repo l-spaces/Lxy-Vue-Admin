@@ -1,3 +1,4 @@
+<!--缓存视图-->
 <script setup lang="ts">
 import { computed, unref, watch } from 'vue';
 import { useRoute } from 'vue-router';

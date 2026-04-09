@@ -1,3 +1,4 @@
+<!--点选验证-->
 <script setup lang="ts">
 import type { CaptchaPoint, PointSelectionCaptchaProps } from '../types';
 

@@ -1,3 +1,4 @@
+<!--单选项-->
 <script setup lang="ts">
 import type { RadioGroupItemProps } from 'reka-ui';
 

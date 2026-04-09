@@ -1,3 +1,4 @@
+<!--扫码登录-->
 <script setup lang="ts">
 import { $t } from '@vben/locales';
 import { VbenButton } from '@vben-core/shadcn-ui';

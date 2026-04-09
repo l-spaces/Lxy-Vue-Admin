@@ -1,3 +1,4 @@
+<!--主题设置-->
 <script setup lang="ts">
 import type { Component } from 'vue';
 

@@ -1,3 +1,4 @@
+<!--卡片触发-->
 <script setup lang="ts">
 import type { HoverCardTriggerProps } from 'reka-ui';
 

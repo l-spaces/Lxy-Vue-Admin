@@ -1,3 +1,4 @@
+<!--认证工具栏-->
 <script setup lang="ts">
 import type { ToolbarType } from './types';
 

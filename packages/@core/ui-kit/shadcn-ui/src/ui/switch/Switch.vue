@@ -1,3 +1,4 @@
+<!--开关组件-->
 <script setup lang="ts">
 import type { SwitchRootEmits, SwitchRootProps } from 'reka-ui';
 

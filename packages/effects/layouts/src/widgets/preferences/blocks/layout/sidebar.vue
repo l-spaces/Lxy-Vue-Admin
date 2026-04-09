@@ -1,3 +1,4 @@
+<!--侧栏设置-->
 <script setup lang="ts">
 import type { LayoutType } from '@vben/types';
 

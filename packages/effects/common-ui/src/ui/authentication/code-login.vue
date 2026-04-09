@@ -1,3 +1,4 @@
+<!--验证码登录-->
 <script setup lang="ts">
 import type { VbenFormSchema } from '@vben-core/form-ui';
 

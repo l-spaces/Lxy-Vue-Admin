@@ -1,3 +1,4 @@
+<!--滑块滑条-->
 <script setup lang="ts">
 import type { CSSProperties } from 'vue';
 

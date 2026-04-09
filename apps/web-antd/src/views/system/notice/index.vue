@@ -1,3 +1,4 @@
+<!--公告管理-->
 <script setup lang="ts">
 import type { VbenFormProps } from '@vben/common-ui';
 

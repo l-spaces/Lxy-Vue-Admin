@@ -1,3 +1,4 @@
+<!--回调页-->
 <script setup lang="ts">
 import type { AuthApi } from '#/api';
 

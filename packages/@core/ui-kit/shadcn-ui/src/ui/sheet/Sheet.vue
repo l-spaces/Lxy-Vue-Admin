@@ -1,3 +1,4 @@
+<!--侧边面板-->
 <script setup lang="ts">
 import type { DialogRootEmits, DialogRootProps } from 'reka-ui';
 

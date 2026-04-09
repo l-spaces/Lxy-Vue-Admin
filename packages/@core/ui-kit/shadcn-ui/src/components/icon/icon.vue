@@ -1,3 +1,4 @@
+<!--图标组件-->
 <script setup lang="ts">
 import type { Component } from 'vue';
 

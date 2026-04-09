@@ -1,3 +1,4 @@
+<!--拖拽柄-->
 <script setup lang="ts">
 import type {
   SplitterResizeHandleEmits,

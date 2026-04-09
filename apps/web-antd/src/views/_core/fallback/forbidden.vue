@@ -1,3 +1,4 @@
+<!--无权访问-->
 <script lang="ts" setup>
 import { Fallback } from '@vben/common-ui';
 

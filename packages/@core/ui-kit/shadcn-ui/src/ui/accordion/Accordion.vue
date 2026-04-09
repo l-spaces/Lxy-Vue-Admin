@@ -1,3 +1,4 @@
+<!--折叠面板-->
 <script setup lang="ts">
 import type { AccordionRootEmits, AccordionRootProps } from 'reka-ui';
 

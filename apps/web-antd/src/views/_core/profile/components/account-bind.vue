@@ -1,3 +1,4 @@
+<!--账号绑定-->
 <script setup lang="tsx">
 import type { BindItem } from '../../oauth-common';
 

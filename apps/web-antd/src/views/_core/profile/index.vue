@@ -1,3 +1,4 @@
+<!--个人中心-->
 <script setup lang="ts">
 import type { UserProfile } from '#/api/system/profile/model';
 

@@ -1,3 +1,4 @@
+<!--悬浮卡片-->
 <script setup lang="ts">
 import type {
   HoverCardContentProps,

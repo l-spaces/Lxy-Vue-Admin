@@ -1,3 +1,4 @@
+<!--仿铬标签-->
 <script setup lang="ts">
 import type { TabDefinition } from '@vben-core/typings';
 

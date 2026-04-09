@@ -1,3 +1,4 @@
+<!--布局切换-->
 <script setup lang="ts">
 import type { AuthPageLayoutType } from '@vben/types';
 import type { VbenDropdownMenuItem } from '@vben-core/shadcn-ui';

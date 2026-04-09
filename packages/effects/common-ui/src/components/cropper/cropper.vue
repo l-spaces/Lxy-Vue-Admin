@@ -1,3 +1,4 @@
+<!--图片裁剪-->
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue';
 

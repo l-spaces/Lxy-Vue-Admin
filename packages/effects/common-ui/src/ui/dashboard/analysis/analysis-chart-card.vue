@@ -1,3 +1,4 @@
+<!--图表卡片-->
 <script setup lang="ts">
 import { Card, CardContent, CardHeader, CardTitle } from '@vben-core/shadcn-ui';
 

@@ -1,3 +1,4 @@
+<!--偏好抽屉-->
 <script setup lang="ts">
 import type { SupportedLanguagesType } from '@vben/locales';
 import type {

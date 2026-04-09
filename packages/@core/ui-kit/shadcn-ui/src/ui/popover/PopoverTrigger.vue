@@ -1,3 +1,4 @@
+<!--气泡触发-->
 <script setup lang="ts">
 import type { PopoverTriggerProps } from 'reka-ui';
 

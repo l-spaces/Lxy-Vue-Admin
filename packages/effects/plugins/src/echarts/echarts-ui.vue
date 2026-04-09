@@ -1,3 +1,4 @@
+<!--图表容器-->
 <script setup lang="ts">
 interface Props {
   height?: string;

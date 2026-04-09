@@ -1,3 +1,4 @@
+<!--字典数据-->
 <script setup lang="ts">
 import type { VbenFormProps } from '@vben/common-ui';
 

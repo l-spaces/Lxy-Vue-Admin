@@ -1,3 +1,4 @@
+<!--取消按钮-->
 <script setup lang="ts">
 import type { AlertDialogCancelProps } from 'reka-ui';
 

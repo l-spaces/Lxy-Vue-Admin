@@ -1,3 +1,4 @@
+<!--颜色切换-->
 <script setup lang="ts">
 import type { BuiltinThemeType } from '@vben/types';
 

@@ -1,3 +1,4 @@
+<!--类型重构-->
 <!-- 使用vxe实现成本最小 且自带虚拟滚动  -->
 <script setup lang="ts">
 import type { VxeGridProps } from '#/adapter/vxe-table';

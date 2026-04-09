@@ -1,3 +1,4 @@
+<!--分栏容器-->
 <script setup lang="ts">
 import type { SplitterGroupEmits, SplitterGroupProps } from 'reka-ui';
 

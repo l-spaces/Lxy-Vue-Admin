@@ -1,3 +1,4 @@
+<!--布局页脚-->
 <script lang="ts" setup>
 defineOptions({
   name: 'LayoutFooter',

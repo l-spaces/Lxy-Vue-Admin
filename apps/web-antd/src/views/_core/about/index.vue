@@ -1,3 +1,4 @@
+<!--关于页-->
 <script lang="ts" setup>
 import { About } from '@vben/common-ui';
 

@@ -1,3 +1,4 @@
+<!--提示框-->
 <script setup lang="ts">
 import type { TooltipRootEmits, TooltipRootProps } from 'reka-ui';
 

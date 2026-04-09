@@ -1,3 +1,4 @@
+<!--菜单标签-->
 <script setup lang="ts">
 import type { ContextMenuLabelProps } from 'reka-ui';
 

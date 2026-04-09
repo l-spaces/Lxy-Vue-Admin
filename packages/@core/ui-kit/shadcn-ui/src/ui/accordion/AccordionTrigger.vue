@@ -1,3 +1,4 @@
+<!--折叠开关-->
 <script setup lang="ts">
 import type { AccordionTriggerProps } from 'reka-ui';
 

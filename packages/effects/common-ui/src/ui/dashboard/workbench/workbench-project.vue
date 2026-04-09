@@ -1,3 +1,4 @@
+<!--项目面板-->
 <script setup lang="ts">
 import type { WorkbenchProjectItem } from '../typing';
 

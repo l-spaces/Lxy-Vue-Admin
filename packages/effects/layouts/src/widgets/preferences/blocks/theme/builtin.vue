@@ -1,3 +1,4 @@
+<!--内置主题-->
 <script setup lang="ts">
 import type { BuiltinThemePreset } from '@vben/preferences';
 import type { BuiltinThemeType } from '@vben/types';

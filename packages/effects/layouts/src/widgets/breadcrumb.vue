@@ -1,3 +1,4 @@
+<!--面包屑-->
 <script lang="ts" setup>
 import type { BreadcrumbStyleType } from '@vben/types';
 import type { IBreadcrumb } from '@vben-core/shadcn-ui';

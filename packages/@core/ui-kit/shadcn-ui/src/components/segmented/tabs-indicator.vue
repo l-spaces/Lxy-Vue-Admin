@@ -1,3 +1,4 @@
+<!--标签指示-->
 <script setup lang="ts">
 import type { TabsIndicatorProps } from 'reka-ui';
 

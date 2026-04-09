@@ -1,3 +1,4 @@
+<!--密钥输入-->
 <script setup lang="ts">
 import { buildUUID } from '@vben/utils';
 

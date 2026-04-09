@@ -1,3 +1,4 @@
+<!--资料面板-->
 <script setup lang="tsx">
 import type { DescriptionsProps } from 'antdv-next';
 

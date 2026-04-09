@@ -1,3 +1,4 @@
+<!--菜单徽标-->
 <script setup lang="ts">
 import type { MenuRecordBadgeRaw } from '@vben-core/typings';
 

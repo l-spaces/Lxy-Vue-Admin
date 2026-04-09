@@ -1,3 +1,4 @@
+<!--分栏页面-->
 <script lang="ts" setup>
 import type { ColPageProps } from './types';
 

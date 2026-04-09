@@ -1,3 +1,4 @@
+<!--表单标签-->
 <script lang="ts" setup>
 import type { LabelProps } from 'reka-ui';
 

@@ -1,3 +1,4 @@
+<!--标签触发-->
 <script setup lang="ts">
 import type { TabsTriggerProps } from 'reka-ui';
 

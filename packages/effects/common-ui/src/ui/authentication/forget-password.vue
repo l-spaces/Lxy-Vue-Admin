@@ -1,3 +1,4 @@
+<!--忘记密码-->
 <script setup lang="ts">
 import type { VbenFormSchema } from '@vben-core/form-ui';
 

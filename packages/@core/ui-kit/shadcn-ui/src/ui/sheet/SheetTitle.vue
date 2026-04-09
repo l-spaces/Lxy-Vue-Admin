@@ -1,3 +1,4 @@
+<!--面板标题-->
 <script setup lang="ts">
 import type { DialogTitleProps } from 'reka-ui';
 

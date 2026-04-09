@@ -1,3 +1,4 @@
+<!--关闭按钮-->
 <script setup lang="ts">
 import type { DialogCloseProps } from 'reka-ui';
 

@@ -1,3 +1,4 @@
+<!--内部错误-->
 <script lang="ts" setup>
 import { Fallback } from '@vben/common-ui';
 

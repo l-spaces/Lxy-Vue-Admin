@@ -1,3 +1,4 @@
+<!--快捷导航-->
 <script setup lang="ts">
 import type { WorkbenchQuickNavItem } from '../typing';
 

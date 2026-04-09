@@ -1,3 +1,4 @@
+<!--混合菜单-->
 <script lang="ts" setup>
 import type { MenuRecordRaw } from '@vben/types';
 import type { NormalMenuProps } from '@vben-core/menu-ui';

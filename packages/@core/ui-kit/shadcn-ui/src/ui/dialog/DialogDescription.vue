@@ -1,3 +1,4 @@
+<!--对话说明-->
 <script setup lang="ts">
 import type { DialogDescriptionProps } from 'reka-ui';
 

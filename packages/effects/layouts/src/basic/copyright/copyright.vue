@@ -1,3 +1,4 @@
+<!--版权信息-->
 <script lang="ts" setup>
 interface Props {
   companyName?: string;

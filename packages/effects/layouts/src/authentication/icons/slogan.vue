@@ -1,3 +1,4 @@
+<!--标语图-->
 <template>
   <svg
     enable-background="new 0 0 800 800"

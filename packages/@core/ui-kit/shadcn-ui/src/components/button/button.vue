@@ -1,3 +1,4 @@
+<!--按钮组件-->
 <script setup lang="ts">
 import type { VbenButtonProps } from './button';
 

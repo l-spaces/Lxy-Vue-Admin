@@ -1,3 +1,4 @@
+<!--趋势面板-->
 <script setup lang="ts">
 import type { WorkbenchTrendItem } from '../typing';
 

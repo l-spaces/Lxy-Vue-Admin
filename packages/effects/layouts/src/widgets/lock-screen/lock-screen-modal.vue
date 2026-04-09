@@ -1,3 +1,4 @@
+<!--锁屏弹窗-->
 <script setup lang="ts">
 import type { Recordable } from '@vben/types';
 

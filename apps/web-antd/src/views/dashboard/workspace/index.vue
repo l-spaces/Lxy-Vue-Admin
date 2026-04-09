@@ -1,3 +1,4 @@
+<!--工作台-->
 <script lang="ts" setup>
 import type {
   WorkbenchProjectItem,

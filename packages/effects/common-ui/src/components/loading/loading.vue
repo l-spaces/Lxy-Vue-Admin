@@ -1,3 +1,4 @@
+<!--加载容器-->
 <script lang="ts" setup>
 import { VbenLoading } from '@vben-core/shadcn-ui';
 import { cn } from '@vben-core/shared/utils';

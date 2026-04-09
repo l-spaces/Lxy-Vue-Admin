@@ -1,3 +1,4 @@
+<!--输入项-->
 <script setup lang="ts">
 import type { PinInputProps } from './types';
 
